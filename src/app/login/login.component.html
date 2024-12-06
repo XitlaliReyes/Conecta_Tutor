@@ -1,0 +1,15 @@
+<div class="login">
+    <div class="content">
+      <h1>CONECTA TUTOR</h1>
+      <h3>Descubre, conecta y aprende iniciando sesión</h3>
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <label for="usuario">ID</label>
+        <input type="number" id="id" [(ngModel)]="credentials.id" name="id" required>
+        
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contraseña" [(ngModel)]="credentials.password" name="contraseña" required>
+        
+        <button type="submit">Iniciar Sesión</button>
+      </form>      
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="register">
+    <div class="left-column">
+      <img src="/assets/img/registro.jpg" alt="Imagen de registro">
+    </div>
+    <div class="right-column">
+      <h1>Registro</h1>
+      
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <label for="id">ID:</label>
+        <input type="number" id="id" [(ngModel)]="user.id" name="id" required>
+      
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="user.nombre" name="nombre" required>
+      
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" [(ngModel)]="user.apellidos" name="apellidos" required>
+      
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" [(ngModel)]="user.password" name="contraseña" required>
+      
+        <label for="ocupacion">Tipo de Usuario:</label>
+        <select id="ocupacion" [(ngModel)]="user.ocupacion" name="tipo" required>
+          <option value="alumno">Alumno</option>
+          <option value="tutor">Tutor</option>
+        </select>
+      
+        <button type="submit" [disabled]="!form.valid">Registrarme</button>
+      </form>
+      
+  
+      <!-- Mostrar mensaje de éxito -->
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+  
+      <!-- Mostrar mensaje de error -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+  
