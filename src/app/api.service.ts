@@ -16,7 +16,17 @@ export class ApiService {
   }
 
   agregarUsuario(usuario: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuariosg`, usuario);
+    return this.http.post(`${this.apiUrl}/usuarios`, usuario);
+  }
+
+  obtenerUsuario(id: number): Observable<any> {
+    const url = `${this.apiUrl}/usr/${id}`;
+    return this.http.get<any>(url);
+  }
+
+  actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
+    const url = `${this.apiUrl}/usuarios`;
+    return this.http.put(url, { id, ...nuevosDatos });
   }
 
   getAsesoria(): Observable<any> {

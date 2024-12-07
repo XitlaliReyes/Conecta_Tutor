@@ -13,9 +13,8 @@ export class PerfilAlumnoComponent {
   usuarioId: number;
 
   constructor() {
-    const storedId = sessionStorage.getItem('usuarioId') as string; // Aserción de tipo como string
-
-    this.usuarioId = storedId ? +storedId : 0; // Si no es null, lo convertimos a number, si no, asignamos 0
+    const storedId = sessionStorage.getItem('usuarioId') as string; 
+    this.usuarioId = storedId ? +storedId : 0;
   }
 }
 

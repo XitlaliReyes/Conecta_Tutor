@@ -6,6 +6,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilAlumnoComponent } from './perfil-alumno/perfil-alumno.component';
 import { PerfilTutorComponent } from './perfil-tutor/perfil-tutor.component';
+import { UpdateusrComponent } from './updateusr/updateusr.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent},
   { path: 'perfil-alumno', component: PerfilAlumnoComponent},
-  { path: 'perfil-tutor', component: PerfilTutorComponent}
+  { path: 'perfil-tutor', component: PerfilTutorComponent},
+  { path: 'updateusr', component: UpdateusrComponent}
 ];

@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-6">
+            <h2 class="text-center">Editar Datos</h2>
+<br>
+            <form (ngSubmit)="actualizarUsuario()" #formulario="ngForm" class="p-4 border rounded shadow">
+                
+                <div class="form-group">
+                    <label for="nombre">ID</label>
+                    <input 
+                        disabled
+                        type="number" 
+                        id="id" 
+                        name="id" 
+                        [(ngModel)]="usuarioId" 
+                        class="form-control" 
+                        placeholder="ID Usuario">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre" 
+                        [(ngModel)]="usuario.nombre" 
+                        required 
+                        class="form-control" 
+                        placeholder="Ingresa tu nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input 
+                        type="text" 
+                        id="apellidos" 
+                        name="apellidos" 
+                        [(ngModel)]="usuario.apellidos" 
+                        required 
+                        class="form-control" 
+                        placeholder="Ingresa tus apellidos">
+                </div>
+
+                <div class="form-group">
+                    <label for="ocupacion">Ocupación</label>
+                    <select disabled
+                        id="ocupacion" 
+                        name="ocupacion" 
+                        [(ngModel)]="usuario.ocupacion" 
+                        required 
+                        class="form-control">
+                        <option value="alumno">Alumno</option>
+                        <option value="tutor">Tutor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        [(ngModel)]="usuario.password" 
+                        required 
+                        class="form-control" 
+                        placeholder="Ingresa una nueva contraseña">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!formulario.valid">
+                    Actualizar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
