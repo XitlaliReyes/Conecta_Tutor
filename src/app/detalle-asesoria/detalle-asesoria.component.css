@@ -1,0 +1,58 @@
+
+.info-title{
+    font-weight: bold;
+    font-size: large;
+}
+.info-content{
+    font-size: larger;
+  }
+  p {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.btn-success {
+    background-color: #3E5C76;
+    color: #fff;
+  }
+  
+  button.btn-success:hover {
+    background-color: #4f718f;
+  }
+  
+  button.btn-primary {
+    background-color: #8AA088;
+    color: #fff;
+    margin-left: 10px;
+  }
+  
+  button.btn-primary:hover {
+    background-color: #9bb499;
+  }
+  
+  button.btn-secondary {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 15px;
+    }
+  }
+  
