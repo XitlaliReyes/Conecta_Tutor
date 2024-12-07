@@ -6,11 +6,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilAlumnoComponent } from './perfil-alumno/perfil-alumno.component';
 import { PerfilTutorComponent } from './perfil-tutor/perfil-tutor.component';
-<<<<<<< Updated upstream
 import { UpdateusrComponent } from './updateusr/updateusr.component';
-=======
 import { DetalleAsesoriaComponent } from './detalle-asesoria/detalle-asesoria.component';
->>>>>>> Stashed changes
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -22,11 +19,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'perfil-alumno', component: PerfilAlumnoComponent},
   { path: 'perfil-tutor', component: PerfilTutorComponent},
-<<<<<<< Updated upstream
-  { path: 'updateusr', component: UpdateusrComponent}
-=======
+  { path: 'updateusr', component: UpdateusrComponent},
   { path: 'detalle/:id', component: DetalleAsesoriaComponent },
   
 
->>>>>>> Stashed changes
 ];

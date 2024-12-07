@@ -19,11 +19,9 @@ export class PerfilAlumnoComponent implements OnInit {
   asesoriasEnriquecidas: any[] = []; // Asesorías con nombre de materia agregado
   asesoriaSeleccionada: any = null; // Almacena la asesoría seleccionada
 
-<<<<<<< Updated upstream
   constructor() {
     const storedId = sessionStorage.getItem('usuarioId') as string; 
     this.usuarioId = storedId ? +storedId : 0;
-=======
   constructor(private apiService: ApiService) {
     const storedId = sessionStorage.getItem('usuarioId') as string;
     this.usuarioId = storedId ? +storedId : 0;
@@ -130,6 +128,5 @@ export class PerfilAlumnoComponent implements OnInit {
         console.error('Error al obtener las asesorías asignadas al alumno:', error);
       }
     );
->>>>>>> Stashed changes
   }
 }
