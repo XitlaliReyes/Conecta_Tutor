@@ -25,7 +25,7 @@ export class PerfilAlumnoComponent implements OnInit {
       this.usuarioId = +storedId; 
     }
 
-    this.apiService.getAsesorias().subscribe(
+    this.apiService.getAsesorias(this.usuarioId).subscribe(
       (data)=> {
         console.log('Datos recibidos: ', data);
         this.asesorias = data;

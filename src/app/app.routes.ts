@@ -8,6 +8,7 @@ import { PerfilAlumnoComponent } from './perfil-alumno/perfil-alumno.component';
 import { PerfilTutorComponent } from './perfil-tutor/perfil-tutor.component';
 import { UpdateusrComponent } from './updateusr/updateusr.component';
 import { DetalleAsesoriaComponent } from './detalle-asesoria/detalle-asesoria.component';
+import { SolicitudComponent } from './solicitud/solicitud.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'perfil-tutor', component: PerfilTutorComponent},
   { path: 'updateusr', component: UpdateusrComponent},
   { path: 'detalle/:id', component: DetalleAsesoriaComponent },
+  {path: 'solicitud', component: SolicitudComponent},
   
 
 ];

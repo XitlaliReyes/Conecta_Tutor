@@ -12,37 +12,20 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './detalle-asesoria.component.css'
 })
 export class DetalleAsesoriaComponent implements OnInit {
-
   asesoria: any = null;
-  lugar: any = null;
-  materia: any = null;
-  maestro: any = null;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID desde la URL
     if (id) {
-      this.apiService.getAsesorias().subscribe(
+      this.apiService.getDetallesAsesorias().subscribe(
         (asesorias) => {
+          // Busca la asesoría por ID
           this.asesoria = asesorias.find((a: any) => a.id_asesoria === +id);
-
-          if (this.asesoria) {
-            this.apiService.getLugar().subscribe((lugares) => {
-              this.lugar = lugares.find((l: any) => l.id_lugar === this.asesoria.id_lugar);
-            });
-
-            this.apiService.getMaterias().subscribe((materias) => {
-              this.materia = materias.find((m: any) => m.id === this.asesoria.id_materia);
-            });
-
-            this.apiService.getUsuarios().subscribe((usuarios) => {
-              this.maestro = usuarios.find((u: any) => u.id === this.asesoria.id_maestro);
-            });
-          }
         },
         (error) => {
-          console.error('Error al obtener asesorías:', error);
+          console.error('Error al obtener la asesoría:', error);
         }
       );
     }

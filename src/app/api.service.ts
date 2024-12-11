@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.137.201:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -34,8 +34,13 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-  getAsesorias(): Observable<any> {
+  getDetallesAsesorias(): Observable<any> {
     return this.http.get(`${this.apiUrl}/asesorias`);
+  }
+
+  getAsesorias(id:number): Observable<any> {
+    const url = `${this.apiUrl}/asesorias/${id}`;
+    return this.http.get<any>(url);
   }
 
   getMaterias(): Observable<any> {
@@ -50,5 +55,7 @@ export class ApiService {
     return this.http.get<any[]>(`${this.apiUrl}/alumnoasesoria`);
   }
 
-
+  enviarSolicitud(solicitud: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/asesoria`, solicitud);
+  }
 }

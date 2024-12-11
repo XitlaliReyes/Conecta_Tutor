@@ -1,51 +1,47 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
-    <h1 class="text-center">Detalles de la Asesoría</h1>
-  
-    
-    <div class="container mt-5">      
-        <div *ngIf="asesoria" class="info-container mt-4">
-          <div class="info-item">
-            <p class="info-title">Materia:</p>
-            <p class="info-content">{{ materia?.nombre }}</p>
-          </div>
-          <hr>
-          <div class="info-item">
-            <p class="info-title">Fecha:</p>
-            <p class="info-content">{{ asesoria.fecha }}</p>
-          </div>
-          <hr>
-          <div class="info-item">
-            <p class="info-title">Horario:</p>
-            <p class="info-content">{{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}</p>
-          </div>
-          <hr>
-          <div class="info-item">
-            <p class="info-title">Lugar:</p>
-            <p class="info-content">{{ lugar?.nombre }}</p>
-          </div>
-          <hr>
-          <div class="info-item">
-            <p class="info-title">Impartido por:</p>
-            <p class="info-content">{{ maestro?.nombre }} {{ maestro?.apellidos }}</p>
-          </div>
-      
-          <div class="text-center mt-4">
-            <button class="btn btn-primary">Inscribirme</button>
-          </div>
-      
-          <div class="mt-5">
-            <h3>Comentarios</h3>
-            <textarea class="form-control" rows="4" placeholder="Deja una pregunta o comentario"></textarea>
-            <button class="btn btn-secondary mt-2">Enviar</button>
-          </div>
-        </div>
-      
-        <div *ngIf="!asesoria" class="text-center text-muted mt-3">
-          No se encontraron los detalles de esta asesoría.
-        </div>
+  <h1 class="text-center">Detalles de la Asesoría</h1>
+
+  <div class="container mt-5">
+    <div *ngIf="asesoria" class="info-container mt-4">
+      <div class="info-item">
+        <p class="info-title">Materia:</p>
+        <p>{{ asesoria.materiaNombre }}</p>
       </div>
-      
-      
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Fecha:</p>
+        <p>Inicio: {{ asesoria.fecha_inicio }} - Fin: {{ asesoria.fecha_fin }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Horario:</p>
+        <p>{{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Lugar:</p>
+        <p>{{ asesoria.lugarNombre }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Impartido por:</p>
+        <p>{{ asesoria.maestroNombre }}</p>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-primary">Inscribirme</button>
+      </div>
+
+      <div class="mt-5">
+        <h3>Comentarios</h3>
+        <textarea class="form-control" rows="4" placeholder="Deja una pregunta o comentario"></textarea>
+        <button class="btn btn-secondary mt-2">Enviar</button>
+      </div>
+    </div>
+
+    <div *ngIf="!asesoria" class="text-center text-muted mt-3">
+      No se encontraron los detalles de esta asesoría.
+    </div>
   </div>
-  
+</div>

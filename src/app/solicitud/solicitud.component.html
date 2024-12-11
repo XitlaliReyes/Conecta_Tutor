@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div>
+    <h1>Solicitud de Asesoría</h1>
+  
+    <label for="materias">Materias:</label>
+    <select id="materias" [(ngModel)]="materiasSeleccionadas" multiple>
+      <option *ngFor="let materia of materias" [value]="materia.nombre">
+        {{ materia.nombre }}
+      </option>
+    </select>
+  
+    <label for="fecha">Días:</label>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+      <input type="checkbox" class="btn-check" id="btncheck1" [checked]="diasSeleccionados.includes('Lunes')" (change)="agregarDia('Lunes')" />
+      <label class="btn btn-outline-primary" for="btncheck1">Lunes</label>
+  
+      <input type="checkbox" class="btn-check" id="btncheck2" [checked]="diasSeleccionados.includes('Martes')" (change)="agregarDia('Martes')" />
+      <label class="btn btn-outline-primary" for="btncheck2">Martes</label>
+  
+      <input type="checkbox" class="btn-check" id="btncheck3" [checked]="diasSeleccionados.includes('Miércoles')" (change)="agregarDia('Miércoles')" />
+      <label class="btn btn-outline-primary" for="btncheck3">Miércoles</label>
+  
+      <input type="checkbox" class="btn-check" id="btncheck4" [checked]="diasSeleccionados.includes('Jueves')" (change)="agregarDia('Jueves')" />
+      <label class="btn btn-outline-primary" for="btncheck4">Jueves</label>
+  
+      <input type="checkbox" class="btn-check" id="btncheck5" [checked]="diasSeleccionados.includes('Viernes')" (change)="agregarDia('Viernes')" />
+      <label class="btn btn-outline-primary" for="btncheck5">Viernes</label>
+    </div>
+  
+    <label for="hora">Hora de inicio:</label>
+    <input type="time" id="hora" [(ngModel)]="horaSeleccionada" min="07:00" max="19:00" />
+  
+    <button (click)="enviarSolicitud()">Enviar Solicitud</button>
+  </div>
+  
