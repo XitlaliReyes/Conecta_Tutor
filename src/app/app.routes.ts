@@ -9,6 +9,7 @@ import { PerfilTutorComponent } from './perfil-tutor/perfil-tutor.component';
 import { UpdateusrComponent } from './updateusr/updateusr.component';
 import { DetalleAsesoriaComponent } from './detalle-asesoria/detalle-asesoria.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -23,6 +24,6 @@ export const routes: Routes = [
   { path: 'updateusr', component: UpdateusrComponent},
   { path: 'detalle/:id', component: DetalleAsesoriaComponent },
   {path: 'solicitud', component: SolicitudComponent},
-  
+  {path: 'calendario', component: CalendarioComponent},
 
 ];

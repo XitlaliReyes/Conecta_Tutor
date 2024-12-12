@@ -1,7 +1,8 @@
 <app-navbar></app-navbar>
-<div>
+
+
+<div class="container">
     <h1>Solicitud de Asesoría</h1>
-  
     <label for="materias">Materias:</label>
     <select id="materias" [(ngModel)]="materiasSeleccionadas" multiple>
       <option *ngFor="let materia of materias" [value]="materia.nombre">
@@ -30,6 +31,6 @@
     <label for="hora">Hora de inicio:</label>
     <input type="time" id="hora" [(ngModel)]="horaSeleccionada" min="07:00" max="19:00" />
   
-    <button (click)="enviarSolicitud()">Enviar Solicitud</button>
+    <button (click)="enviarSolicitud()">Solicitar</button>
   </div>
   
