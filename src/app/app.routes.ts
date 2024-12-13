@@ -11,6 +11,7 @@ import { DetalleAsesoriaComponent } from './detalle-asesoria/detalle-asesoria.co
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { DetalleDisponiblesComponent } from './detalle-disponibles/detalle-disponibles.component';
+import { AceptacionCursosComponent } from './aceptacion-cursos/aceptacion-cursos.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -27,5 +28,6 @@ export const routes: Routes = [
   {path: 'solicitud', component: SolicitudComponent},
   {path: 'calendario', component: CalendarioComponent},
   {path: 'detalle2/:id', component: DetalleDisponiblesComponent},
+  {path: 'aceptacion/:id', component: AceptacionCursosComponent},
 
 ];

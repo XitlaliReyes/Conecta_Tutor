@@ -58,7 +58,7 @@ export class ApiService {
   }
 
   getLugar(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/lugar`);
+    return this.http.get(`${this.apiUrl}/lugares`);
   }
 
   getAlumnoAsesoria(): Observable<any[]> {

@@ -1,0 +1,55 @@
+/* Estilo para la card y los íconos */
+.card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .card-text i {
+    color: #8AA088;
+    margin-right: 8px; 
+  }
+  
+  .card-body a {
+    margin-top: 20px;
+    display: inline-block;
+  }
+  
+  .btn-primary {
+    background-color: #3E5C76;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #4b6e8b; 
+  }
+    
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  .container{
+    margin-bottom: 50px;
+  }
