@@ -39,6 +39,11 @@ export class ApiService {
     return this.http.put(url, { id, ...nuevosDatos });
   }
 
+  cancelarAsesoria(solicitud: any): Observable<any> {
+    const url = `${this.apiUrl}/cancelarasesoria`;
+    return this.http.put(url, solicitud);  // Aquí 'solicitud' será el objeto { idAsesoria: id }
+  }
+
   getAsesoriasUsuario(id:number): Observable<any> {
     const url = `${this.apiUrl}/asesorias/alumno/${id}`;
     return this.http.get<any>(url);
@@ -69,6 +74,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/asesoriaspendientes`);
   }
 
+  getAsesoriasSolicitadas(idUsuario: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/asesoriasSolicitadas/${idUsuario}`);
+  }
+  
   enviarSolicitud(solicitud: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/asesoria`, solicitud);
   }

@@ -22,16 +22,35 @@ export class SolicitudComponent implements OnInit {
   materiasSeleccionadas: string[] = [];
   diasSeleccionados: string[] = [];
   horaSeleccionada: string = '';
+  asesoriasSolicitadas: any[] = [];  // Aquí se almacenarán las asesorías solicitadas
+  usuarioId: number = 0;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    // Recuperar el ID del usuario desde sessionStorage
+    const storedId = sessionStorage.getItem('usuarioId');
+    if (storedId) {
+      this.usuarioId = +storedId;  // Convertir el ID en número
+    }
+
+    // Obtener las materias disponibles
     this.apiService.getMaterias().subscribe(
       (materias) => {
         this.materias = materias;
       },
       (error) => {
         console.error('Error al cargar las materias:', error);
+      }
+    );
+
+    // Obtener las asesorías solicitadas
+    this.apiService.getAsesoriasSolicitadas(this.usuarioId).subscribe(
+      (asesorias) => {
+        this.asesoriasSolicitadas = asesorias;
+      },
+      (error) => {
+        console.error('Error al obtener las asesorías solicitadas:', error);
       }
     );
   }
@@ -67,17 +86,43 @@ export class SolicitudComponent implements OnInit {
     const solicitud = {
       dias: diasString,
       horario_inicio: this.horaSeleccionada,
-      materia: this.materiasSeleccionadas.join(', ')
+      materia: this.materiasSeleccionadas.join(', '),
+      id_solicitante: this.usuarioId  // Incluir el ID del usuario
     };
 
+    // Enviar solicitud de asesoría
     this.apiService.enviarSolicitud(solicitud).subscribe(
       (response) => {
         alert('Solicitud enviada exitosamente.');
-        console.log(response);
+        // Recargar las asesorías solicitadas después de enviar la solicitud
+        this.apiService.getAsesoriasSolicitadas(this.usuarioId).subscribe(
+          (asesorias) => {
+            this.asesoriasSolicitadas = asesorias;
+          },
+          (error) => {
+            console.error('Error al obtener las asesorías solicitadas:', error);
+          }
+        );
       },
       (error) => {
         console.error('Error al enviar la solicitud:', error);
       }
     );
   }
+
+  cancelarAsesoria(id: number): void {
+    console.log('Intentando cancelar la asesoría con id:', id);  // Para asegurarte de que el id es correcto
+  
+    // Enviar el objeto con la forma correcta: { idAsesoria: id }
+    this.apiService.cancelarAsesoria({ idAsesoria: id }).subscribe(
+      (response) => {
+        alert('Asesoría cancelada exitosamente.');
+      },
+      (error) => {
+        console.error('Error al cancelar la asesoría:', error);
+      }
+    );
+  }
+  
+  
 }

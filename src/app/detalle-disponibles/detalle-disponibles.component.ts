@@ -12,22 +12,47 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './detalle-disponibles.component.css'
 })
 export class DetalleDisponiblesComponent {
-asesoria: any = null;
+  asesoria: any = null;
+  usuarioId: number = 0; 
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id'); // Obtiene el ID desde la URL
+    const storedId = sessionStorage.getItem('usuarioId');
+    if (storedId) {
+      this.usuarioId = +storedId; 
+    } else {
+      console.error('Usuario no autenticado. No se encontró el id del usuario en sessionStorage.');
+      return; 
+    }
+
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.apiService.getDetallesAsesorias().subscribe(
         (asesorias) => {
-          // Busca la asesoría por ID
           this.asesoria = asesorias.find((a: any) => a.id_asesoria === +id);
         },
         (error) => {
           console.error('Error al obtener la asesoría:', error);
         }
       );
+    }
+  }
+
+  baja(): void {
+    if (this.asesoria) {
+      const idAsesoria = this.asesoria.id_asesoria; 
+      this.apiService.eliminarAsesoriaUsuario(idAsesoria, this.usuarioId).subscribe(
+        () => {
+          alert('Dado de baja');
+        },
+        (error) => {
+          console.error('Error al darse de baja:', error);
+          alert('Ocurrió un error al darse de baja. Inténtalo de nuevo.');
+        }
+      );
+    } else {
+      alert('No se ha encontrado la asesoría.');
     }
   }
 }
