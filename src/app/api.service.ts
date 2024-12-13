@@ -19,6 +19,16 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }
 
+  altaAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
+    const body = { idAsesoria, idUsuario };
+    return this.http.post<void>(`${this.apiUrl}/alta`, body);
+  }
+
+  eliminarAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
+    const body = { idAsesoria, idUsuario };
+    return this.http.post<void>(`${this.apiUrl}/baja`, body);
+  }
+
   obtenerUsuario(id: number): Observable<any> {
     const url = `${this.apiUrl}/usr/${id}`;
     return this.http.get<any>(url);
