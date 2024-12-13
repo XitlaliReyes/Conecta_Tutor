@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./perfil-alumno.component.css']
 })
 export class PerfilAlumnoComponent implements OnInit {
-  usuarioId: number = 0;  // Asegúrate de que sea un número
+  usuarioId: number = 0;  
   asesorias: any[] = [];
   asesoriasAsignadas: any[] = [];
 

@@ -5,14 +5,14 @@ import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-detalle-asesoria',
+  selector: 'app-detalle-disponibles',
   standalone: true,
   imports: [NavbarComponent, CommonModule],
-  templateUrl: './detalle-asesoria.component.html',
-  styleUrl: './detalle-asesoria.component.css'
+  templateUrl: './detalle-disponibles.component.html',
+  styleUrl: './detalle-disponibles.component.css'
 })
-export class DetalleAsesoriaComponent implements OnInit {
-  asesoria: any = null;
+export class DetalleDisponiblesComponent {
+asesoria: any = null;
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 

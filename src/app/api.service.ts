@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.137.201:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.0.246:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -53,6 +53,10 @@ export class ApiService {
 
   getAlumnoAsesoria(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/alumnoasesoria`);
+  }
+
+  getAsesoriaPendientes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/asesoriaspendientes`);
   }
 
   enviarSolicitud(solicitud: any): Observable<any> {
