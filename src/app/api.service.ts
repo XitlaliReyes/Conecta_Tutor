@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.137.201:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.0.246:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,16 @@ export class ApiService {
 
   agregarUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
+  }
+
+  altaAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
+    const body = { idAsesoria, idUsuario };
+    return this.http.post<void>(`${this.apiUrl}/alta`, body);
+  }
+
+  eliminarAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
+    const body = { idAsesoria, idUsuario };
+    return this.http.post<void>(`${this.apiUrl}/baja`, body);
   }
 
   obtenerUsuario(id: number): Observable<any> {
