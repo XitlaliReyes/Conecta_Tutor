@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.0.246:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.1.65:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<any> {
     return this.http.get(`${this.apiUrl}/usuarios`);
+  }
+
+  getCarrera(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/carreras`);
   }
 
   agregarUsuario(usuario: any): Observable<any> {
@@ -58,9 +62,11 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-  getMaterias(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/materias`);
+  getMaterias(id:number): Observable<any> {
+    const url = `${this.apiUrl}/materias/${id}`;
+    return this.http.get<any>(url);
   }
+
 
   getLugar(): Observable<any> {
     return this.http.get(`${this.apiUrl}/lugares`);

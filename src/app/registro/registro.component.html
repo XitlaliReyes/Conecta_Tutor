@@ -23,6 +23,16 @@
           <option value="alumno">Alumno</option>
           <option value="tutor">Tutor</option>
         </select>
+
+        <!-- Mostrar el select de carrera solo si el tipo de usuario es "alumno" -->
+      <div *ngIf="user.ocupacion === 'alumno'">
+        <label for="carrera">Carrera:</label>
+        <select id="carrera" [(ngModel)]="user.id_carrera" name="id_carrera" required>
+          <option *ngFor="let carrera of carreras" [value]="carrera.id">
+            {{ carrera.nombre }}
+          </option>
+        </select>
+      </div>
       
         <button type="submit" [disabled]="!form.valid">Registrarme</button>
       </form>

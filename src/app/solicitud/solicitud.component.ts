@@ -35,7 +35,7 @@ export class SolicitudComponent implements OnInit {
     }
 
     // Obtener las materias disponibles
-    this.apiService.getMaterias().subscribe(
+    this.apiService.getMaterias(this.usuarioId).subscribe(
       (materias) => {
         this.materias = materias;
       },
@@ -117,6 +117,7 @@ export class SolicitudComponent implements OnInit {
     this.apiService.cancelarAsesoria({ idAsesoria: id }).subscribe(
       (response) => {
         alert('Asesoría cancelada exitosamente.');
+        window.location.reload();
       },
       (error) => {
         console.error('Error al cancelar la asesoría:', error);
