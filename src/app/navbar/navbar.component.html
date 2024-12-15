@@ -1,16 +1,17 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
     <a class="navbar-brand" href="#">U A A</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div style="margin-left: 10%;" class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a style="margin: 0px 50%;" class="nav-link" [routerLink]="'/inicio'">Inicio</a>
-        <a style="margin: 0px 50%;" class="nav-link" [routerLink]="'/calendario'">Calendario</a>
-        <a style="margin: 0px 50%;" class="nav-link" [routerLink]="'/solicitud'">Solicitar Asesoria</a>
-        <a style="margin: 0px 50%;" class="nav-link" [routerLink]="'/updateusr'"><i class="fa-solid fa-user"></i></a>
-      </div>
+    <div class="navbar-nav ms-auto"> <!-- Alinea los enlaces a la derecha -->
+      <a class="nav-link" [routerLink]="'/inicio'">Inicio</a>
+      <a class="nav-link" [routerLink]="'/calendario'">Calendario</a>
+      <a class="nav-link" [routerLink]="'/solicitud'">Solicitar Asesoría</a>
+      <a class="nav-link" [routerLink]="'/updateusr'"><i class="fa-solid fa-user"></i></a>
+      <a *ngIf="isLoggedIn()" class="nav-link" (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i> 
+      </a>
     </div>
   </div>
 </nav>
