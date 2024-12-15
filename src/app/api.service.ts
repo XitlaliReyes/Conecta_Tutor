@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.1.80:3001';  // La URL de tu API
+  private apiUrl = 'http://localhost:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -38,18 +38,28 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-  actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
+  actualizarUsuario(id_asesoria: number, nuevosDatos: any): Observable<any> {
     const url = `${this.apiUrl}/usuarios`;
-    return this.http.put(url, { id, ...nuevosDatos });
+    return this.http.put(url, { id_asesoria, ...nuevosDatos });
+  }
+
+  actualizarAsesoria(id_asesoria:number, nuevosDatos: any): Observable<any>{
+    const url = `${this.apiUrl}/asesoria`;
+    return this.http.put(url, { id_asesoria, ...nuevosDatos });
   }
 
   cancelarAsesoria(solicitud: any): Observable<any> {
     const url = `${this.apiUrl}/cancelarasesoria`;
-    return this.http.put(url, solicitud);  // Aquí 'solicitud' será el objeto { idAsesoria: id }
+    return this.http.put(url, solicitud);
   }
 
   getAsesoriasUsuario(id:number): Observable<any> {
     const url = `${this.apiUrl}/asesorias/alumno/${id}`;
+    return this.http.get<any>(url);
+  }
+
+  getAsesoriasAsesor(id:number): Observable<any> {
+    const url = `${this.apiUrl}/asesorias/asesor/${id}`;
     return this.http.get<any>(url);
   }
 
