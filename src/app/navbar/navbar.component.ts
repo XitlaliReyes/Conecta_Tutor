@@ -13,6 +13,10 @@ import { Router, RouterModule } from '@angular/router';
 export class NavbarComponent {
   constructor(private router: Router) {}
 
+  getUsuarioOcupacion(): string | null {
+    return sessionStorage.getItem('usuarioOcupacion'); // Obtiene la ocupación del usuario
+  }
+  
   isLoggedIn(): boolean {
     return !!sessionStorage.getItem('usuarioId'); 
   }

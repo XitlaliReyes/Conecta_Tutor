@@ -34,7 +34,8 @@ export class LoginComponent {
   
     for (let i = 0; i < this.usuarios.length; i++) {
       if (this.usuarios[i].id === this.credentials.id && this.usuarios[i].password === this.credentials.password) {
-        sessionStorage.setItem('usuarioId', this.usuarios[i].id);  
+        sessionStorage.setItem('usuarioId', this.usuarios[i].id);
+        sessionStorage.setItem('usuarioOcupacion', this.usuarios[i].ocupacion); // Guarda la ocupación del usuario  
         // Redirigir a la página de perfil según el tipo de usuario
         this.router.navigate([this.usuarios[i].ocupacion === 'alumno' ? '/perfil-alumno' : '/perfil-tutor']);
         return;
