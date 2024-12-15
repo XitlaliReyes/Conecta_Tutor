@@ -18,15 +18,28 @@ export class AceptacionCursosComponent implements OnInit{
   lugares: any[] = [];
   selectedLugar: any;
   selectedFecha: string = "";
+  usuarioId: number = 0; 
 
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
+  
+
   ngOnInit(): void {
+    const storedId = sessionStorage.getItem('usuarioId');
+
+    if (storedId) {
+      this.usuarioId = +storedId; 
+    } else {alert('Debe iniciar sesión para continuar.');
+        this.router.navigate(['/login']);
+        return;
+    }
+  
+
     const idAsesoria = this.route.snapshot.paramMap.get('id');
-    
     if (idAsesoria) {
       this.getAsesoriaDetails(idAsesoria); 
     }
@@ -52,14 +65,29 @@ export class AceptacionCursosComponent implements OnInit{
     );
   }
 
-  // Método para manejar la acción de inscripción
   inscribirse(): void {
-    // Lógica para inscribirse con la fecha seleccionada y el lugar seleccionado
-    if (this.selectedFecha && this.selectedLugar) {
-      console.log(`Inscripción exitosa! Fecha: ${this.selectedFecha}, Lugar: ${this.selectedLugar.nombre}`);
-      // Aquí puedes hacer un POST a la API o alguna lógica que actualice la asesoría
+    if (this.selectedFecha && this.selectedLugar && this.usuarioId) {
+      
+      const nuevosDatos = {
+        fecha_inicio: this.selectedFecha,
+        id_lugar: +this.selectedLugar,
+        id_maestro: this.usuarioId
+      };
+  
+      this.apiService.actualizarAsesoria(this.asesoria.id_asesoria, nuevosDatos).subscribe(
+        (response) => {
+          alert('Asesoría actualizada correctamente.');
+          console.log('Respuesta del servidor:', response);
+          // Actualizar el estado local o redirigir
+        },
+        (error) => {
+          console.error('Error al actualizar la asesoría:', error);
+          alert('Hubo un problema al actualizar la asesoría.');
+        }
+      );
     } else {
-      alert("Debe seleccionar una fecha y un lugar.");
+      alert('Debe completar todos los campos.');
     }
   }
+  
 }

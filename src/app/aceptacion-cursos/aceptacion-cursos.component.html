@@ -15,6 +15,11 @@
       </div>
     <hr>
     <div class="info-item">
+      <p class="info-title">Dias de la Asesoria:</p>
+      <p>{{ asesoria.dias }}</p>
+    </div>
+    <hr>
+    <div class="info-item">
       <p class="info-title">Horario:</p>
       <p>{{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}</p>
     </div>
@@ -22,19 +27,17 @@
     <div class="info-item">
       <p class="info-title">Lugar:</p>
       <select [(ngModel)]="selectedLugar" class="form-select">
-        <option *ngFor="let lugar of lugares" [value]="lugar">{{ lugar.nombre }}</option>
+        <option *ngFor="let lugar of lugares" [value]="lugar.id_lugar">{{ lugar.nombre }}</option>
       </select>
     </div>
     <hr>
-    <div class="info-item">
+    <!-- <div class="info-item">
       <p class="info-title">Impartido por:</p>
       <p>{{ asesoria.maestroNombre }}</p>
-    </div>
-
-    
+    </div> -->
 
     <div class="text-center mt-4">
-      <button class="btn btn-primary" (click)="inscribirse()">Inscribirme</button>
+      <button class="btn btn-primary" (click)="inscribirse()">Aceptar Asesoria</button>
     </div>
   </div>
 

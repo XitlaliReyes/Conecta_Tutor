@@ -38,14 +38,19 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-  actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
+  actualizarUsuario(id_asesoria: number, nuevosDatos: any): Observable<any> {
     const url = `${this.apiUrl}/usuarios`;
-    return this.http.put(url, { id, ...nuevosDatos });
+    return this.http.put(url, { id_asesoria, ...nuevosDatos });
+  }
+
+  actualizarAsesoria(id_asesoria:number, nuevosDatos: any): Observable<any>{
+    const url = `${this.apiUrl}/asesoria`;
+    return this.http.put(url, { id_asesoria, ...nuevosDatos });
   }
 
   cancelarAsesoria(solicitud: any): Observable<any> {
     const url = `${this.apiUrl}/cancelarasesoria`;
-    return this.http.put(url, solicitud);  // Aquí 'solicitud' será el objeto { idAsesoria: id }
+    return this.http.put(url, solicitud);
   }
 
   getAsesoriasUsuario(id:number): Observable<any> {

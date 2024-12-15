@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-asesoria',
@@ -15,7 +15,7 @@ export class DetalleAsesoriaComponent implements OnInit {
   asesoria: any = null;
   usuarioId: number = 0; 
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     const storedId = sessionStorage.getItem('usuarioId');
@@ -45,6 +45,7 @@ export class DetalleAsesoriaComponent implements OnInit {
       this.apiService.altaAsesoriaUsuario(idAsesoria, this.usuarioId).subscribe(
         () => {
           alert('Inscripción exitosa!');
+          this.router.navigate(['/perfil-alumno']);
         },
         (error) => {
           console.error('Error al inscribirse:', error);
