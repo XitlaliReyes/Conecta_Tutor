@@ -77,8 +77,8 @@ export class AceptacionCursosComponent implements OnInit{
       this.apiService.actualizarAsesoria(this.asesoria.id_asesoria, nuevosDatos).subscribe(
         (response) => {
           alert('Asesoría actualizada correctamente.');
-          console.log('Respuesta del servidor:', response);
-          // Actualizar el estado local o redirigir
+          //console.log('Respuesta del servidor:', response);
+          this.router.navigate(['/perfil-tutor']);
         },
         (error) => {
           console.error('Error al actualizar la asesoría:', error);

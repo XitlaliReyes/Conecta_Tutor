@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,13 +17,18 @@ export class PerfilAlumnoComponent implements OnInit {
   asesorias: any[] = [];
   asesoriasAsignadas: any[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     const storedId = sessionStorage.getItem('usuarioId');
     if (storedId) {
       this.usuarioId = +storedId; 
+    }else {
+      this.router.navigate(['/login']);
+      return;
     }
+
+    
 
     this.apiService.getAsesorias(this.usuarioId).subscribe(
       (data)=> {
