@@ -19,6 +19,6 @@ export class NavbarComponent {
 
   logout(): void {
     sessionStorage.removeItem('usuarioId'); 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/main']);
   }
 }
