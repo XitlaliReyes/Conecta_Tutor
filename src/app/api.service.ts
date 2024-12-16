@@ -84,7 +84,7 @@ export class ApiService {
   getMateria(): Observable<any> {
     return this.http.get(`${this.apiUrl}/materias`);
   }
-  
+
   getLugar(): Observable<any> {
     return this.http.get(`${this.apiUrl}/lugares`);
   }
@@ -107,4 +107,11 @@ export class ApiService {
   crearAsesoria(asesoria: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/crear-asesoria`, asesoria);
   }
+  eliminarAsesoriaTutor(idAsesoria: number, idUsuario: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/baja-asesoria`, { id_asesoria: idAsesoria, id_maestro: idUsuario });
+}
+
+
+  
+  
 }
