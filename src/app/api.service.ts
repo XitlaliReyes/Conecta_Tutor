@@ -124,4 +124,15 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/send-email`, { to, subject, text, html }, { responseType: 'text' });
   }
   
+  crearEventoCalendario(datosEvento: {
+    dias: string;
+    horario_inicio: string;
+    horario_fin: string;
+    id_materia: number;
+    id_lugar: number;
+    id_maestro: number;
+    fecha_inicio: string;
+  }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/calendario`, datosEvento);
+  }
 }

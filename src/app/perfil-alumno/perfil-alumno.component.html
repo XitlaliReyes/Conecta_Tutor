@@ -32,7 +32,12 @@
     </div>
     
       <hr>
-    <h2 class="mt-4">Asesorías Asignadas</h2>
+      <h2 class="mt-4 d-flex align-items-center">
+        Asesorías Asignadas
+        <button class="btn btn-link ms-3" (click)="crearEventosCalendario()" title="Agregar a calendario">
+          <i class="fas fa-calendar-plus fs-3 text-primary"></i>
+        </button>
+      </h2>
 
     <div *ngIf="asesoriasAsignadas.length === 0" class="text-center text-muted mt-3">
       No tienes asesorías asignadas.
