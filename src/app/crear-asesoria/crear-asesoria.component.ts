@@ -97,7 +97,6 @@ export class CrearAsesoriaComponent implements OnInit {
       return;
     }
   
-    // Ya no necesitas buscar la materia y lugar con find()
     const asesoria = {
       fecha_inicio: this.fechaInicio,
       fecha_fin: this.fechaFin,
@@ -123,6 +122,7 @@ export class CrearAsesoriaComponent implements OnInit {
       }
     );
   }
+  
   
   
 }
