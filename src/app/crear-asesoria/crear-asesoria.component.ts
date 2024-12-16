@@ -22,7 +22,7 @@ export class CrearAsesoriaComponent implements OnInit {
   fechaInicio: string = '';
   fechaFin: string = '';
   usuarioId: number = 0;
-
+  horarios: string[] = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -53,9 +53,15 @@ export class CrearAsesoriaComponent implements OnInit {
       }
     );
 
-    
+    this.cargarHorarios();
   }
-
+  cargarHorarios(): void {
+    // Generar opciones de horario entre 7:00 AM y 5:00 PM
+    for (let i = 7; i <= 17; i++) {
+      const hora = i.toString().padStart(2, '0') + ':00';
+      this.horarios.push(hora);
+    }
+  }
   agregarDia(dia: string): void {
     const index = this.diasSeleccionados.indexOf(dia);
     if (index === -1) {
@@ -87,7 +93,7 @@ export class CrearAsesoriaComponent implements OnInit {
       return;
     }
   
-    if (!this.horarioInicio || !this.horarioFin) {
+    if (!this.horarioInicio ) {
       alert('Por favor selecciona un horario válido.');
       return;
     }
@@ -102,15 +108,13 @@ export class CrearAsesoriaComponent implements OnInit {
       fecha_fin: this.fechaFin,
       dias: this.diasSeleccionados.join(' y '),
       horario_inicio: this.horarioInicio,
-      horario_fin: this.horarioFin,
-      id_materia: Number(this.materiasSeleccionadas), // Convertir el string a número
-      id_lugar: Number(this.lugarSeleccionado),       // Convertir el string a número
+      id_materia: Number(this.materiasSeleccionadas), 
+      id_lugar: Number(this.lugarSeleccionado),      
       id_maestro: this.usuarioId,
       estado: "Activo",
       id_solicitante: null
     };
   
-    console.log('Objeto asesoria a enviar:', asesoria); // Para debugging
   
     this.apiService.crearAsesoria(asesoria).subscribe(
       (response) => {
@@ -118,10 +122,11 @@ export class CrearAsesoriaComponent implements OnInit {
       },
       (error) => {
         console.error('Error al crear la asesoría:', error);
-        alert('Error al crear la asesoría: ' + error.message); // Mostrar el error específico
+        alert('Error al crear la asesoría: ' + error.message); 
       }
     );
   }
+  
   
   
   

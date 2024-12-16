@@ -46,11 +46,10 @@
 
   <!-- Selección de horario -->
   <label for="horaInicio">Hora de inicio:</label>
-  <input type="time" id="horaInicio" [(ngModel)]="horarioInicio" min="07:00" max="19:00" />
+  <select id="horaInicio" [(ngModel)]="horarioInicio">
+    <option *ngFor="let hora of horarios" [value]="hora">{{ hora }}</option>
+  </select>
 
-  <label for="horaFin">Hora de fin:</label>
-  <input type="time" id="horaFin" [(ngModel)]="horarioFin" min="07:00" max="19:00" />
-
-  <!-- Botón para crear asesoría -->
+  
   <button class="btn btn-primary mt-3" (click)="crearAsesoria()">Crear Asesoría</button>
 </div>
