@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h1>Crear Asesoría</h1>
+
+  <!-- Selección de materia -->
+<label for="materias">Materias:</label>
+<select id="materias" [(ngModel)]="materiasSeleccionadas">
+  <option *ngFor="let materia of materias" [value]="materia.id">
+    {{ materia.nombre }}
+  </option>
+</select>
+
+<!-- Selección de lugar -->
+<select id="lugar" [(ngModel)]="lugarSeleccionado">
+  <option *ngFor="let lugar of lugares" [value]="lugar.id_lugar">
+    {{ lugar.nombre }}
+  </option>
+</select>
+  
+  <!-- Selección de días -->
+  <label for="dias">Días:</label>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="lunes" (change)="agregarDia('Lunes')" />
+    <label class="btn btn-outline-primary" for="lunes">Lunes</label>
+
+    <input type="checkbox" class="btn-check" id="martes" (change)="agregarDia('Martes')" />
+    <label class="btn btn-outline-primary" for="martes">Martes</label>
+
+    <input type="checkbox" class="btn-check" id="miercoles" (change)="agregarDia('Miércoles')" />
+    <label class="btn btn-outline-primary" for="miercoles">Miércoles</label>
+
+    <input type="checkbox" class="btn-check" id="jueves" (change)="agregarDia('Jueves')" />
+    <label class="btn btn-outline-primary" for="jueves">Jueves</label>
+
+    <input type="checkbox" class="btn-check" id="viernes" (change)="agregarDia('Viernes')" />
+    <label class="btn btn-outline-primary" for="viernes">Viernes</label>
+  </div>
+
+  <!-- Selección de fecha de inicio y fin -->
+  <label for="fechaInicio">Fecha de inicio:</label>
+  <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" />
+
+  <label for="fechaFin">Fecha de fin:</label>
+  <input type="date" id="fechaFin" [(ngModel)]="fechaFin" />
+
+  <!-- Selección de horario -->
+  <label for="horaInicio">Hora de inicio:</label>
+  <select id="horaInicio" [(ngModel)]="horarioInicio">
+    <option *ngFor="let hora of horarios" [value]="hora">{{ hora }}</option>
+  </select>
+
+  
+  <button class="btn btn-primary mt-3" (click)="crearAsesoria()">Crear Asesoría</button>
+</div>

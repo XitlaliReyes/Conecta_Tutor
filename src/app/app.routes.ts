@@ -13,6 +13,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { DetalleDisponiblesComponent } from './detalle-disponibles/detalle-disponibles.component';
 import { AceptacionCursosComponent } from './aceptacion-cursos/aceptacion-cursos.component';
 import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
+import { CrearAsesoriaComponent } from './crear-asesoria/crear-asesoria.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -31,5 +32,6 @@ export const routes: Routes = [
   {path: 'calendario', component: CalendarioComponent},
   {path: 'detalle2/:id', component: DetalleDisponiblesComponent},
   {path: 'aceptacion/:id', component: AceptacionCursosComponent},
-
+  {path: 'creacion', component: CrearAsesoriaComponent},
+  
 ];
