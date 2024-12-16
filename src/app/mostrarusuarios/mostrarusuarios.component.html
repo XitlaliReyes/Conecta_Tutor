@@ -1,25 +1,57 @@
+<app-navbar></app-navbar>
 <div class="container mt-5">
-    <h1 class="text-center">Lista de Usuarios</h1>
-    <table class="table table-striped mt-3">
+    <h1 class="text-center">Alumnos</h1>
+    <table class="table table-hover mt-3">
       <thead>
         <tr>
           <th>ID</th>
           <th>Nombre</th>
           <th>Apellidos</th>
-          <th>Ocupación</th>
+          <th>Carrera</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let usuario of usuarios">
+        <ng-container *ngFor="let usuario of usuarios">
+          <tr *ngIf="usuario.ocupacion === 'alumno'">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellidos }}</td>
+            <td>{{ getCarreraNombre(usuario.id_carrera) }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+      
+    </table>
+    <div *ngIf="usuarios.length === 0" class="text-center text-muted">
+      No hay usuarios disponibles.
+    </div>
+</div>
+
+<div class="container mt-5">
+  <h1 class="text-center">Asesores</h1>
+  <table class="table table-hover mt-3">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Ocupación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let usuario of usuarios">
+        <tr *ngIf="usuario.ocupacion === 'tutor'">
           <td>{{ usuario.id }}</td>
           <td>{{ usuario.nombre }}</td>
           <td>{{ usuario.apellidos }}</td>
           <td>{{ usuario.ocupacion }}</td>
         </tr>
-      </tbody>
-    </table>
-    <div *ngIf="usuarios.length === 0" class="text-center text-muted">
-      No hay usuarios disponibles.
-    </div>
+      </ng-container>
+    </tbody>
+    
+  </table>
+  <div *ngIf="usuarios.length === 0" class="text-center text-muted">
+    No hay usuarios disponibles.
   </div>
+</div>
   
