@@ -1,0 +1,28 @@
+.navbar-nav .nav-link {
+    margin: 0 45px; 
+    font-size: 14px; 
+    white-space: nowrap; 
+  }
+  
+  .navbar-brand {
+    font-size: 20px; 
+  }
+  .navbar-custom {
+    background-color: #881600; 
+    color: #ffffff; 
+  }
+  
+  .navbar-custom .nav-link {
+    color: #ffffff; 
+  }
+  
+  
+  .navbar-custom .navbar-brand {
+    color: #ffffff; 
+  }
+  
+
+h1{
+    margin-top: 30px;
+    margin-left: 20px;
+}

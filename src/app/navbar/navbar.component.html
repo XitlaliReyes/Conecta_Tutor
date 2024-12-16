@@ -1,11 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#">U A A</a>
+    <a 
+      *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'" 
+      class="navbar-brand" 
+      [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : '/perfil-tutor'">
+      U A A
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-nav ms-auto"> 
-      <a class="nav-link" [routerLink]="'/perfil'">Inicio</a>
+    <div class="navbar-nav ms-auto">
+      <a 
+        *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'" 
+        class="nav-link" 
+        [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : '/perfil-tutor'">
+        Inicio
+      </a>
       <a class="nav-link" [routerLink]="'/calendario'">Calendario</a>
       <a 
       *ngIf="getUsuarioOcupacion() === 'alumno'" 
