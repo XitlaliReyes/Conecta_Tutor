@@ -56,4 +56,23 @@ export class DetalleTutorComponent {
     }
   }
 
+  baja(): void {
+    if (this.asesoria && this.usuarioId) {
+        const idAsesoria = this.asesoria.id_asesoria;
+        const idUsuario = this.usuarioId;
+
+        this.apiService.eliminarAsesoriaTutor(idAsesoria, idUsuario).subscribe(
+            (response) => {
+                alert('La asesoría ha sido dada de baja.');
+                this.router.navigate(['/perfil-alumno']);
+            },
+            (error) => {
+                console.error('Error al darse de baja:', error);
+                alert('Ocurrió un error al darse de baja. Inténtalo nuevamente.');
+            }
+        );
+    } else {
+        alert('No se encontró la asesoría o el usuario para dar de baja.');
+    }
+}
 }
