@@ -64,7 +64,7 @@ export class DetalleTutorComponent {
         this.apiService.eliminarAsesoriaTutor(idAsesoria, idUsuario).subscribe(
             (response) => {
                 alert('La asesoría ha sido dada de baja.');
-                this.router.navigate(['/perfil-alumno']);
+                this.router.navigate(['/perfil-tutor']);
             },
             (error) => {
                 console.error('Error al darse de baja:', error);
