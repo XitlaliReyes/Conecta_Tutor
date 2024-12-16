@@ -67,6 +67,11 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
+  getAlumnos(id_asesoria:string): Observable<any> {
+    const url = `${this.apiUrl}/alumnos/${id_asesoria}`;
+    return this.http.get<any>(url);
+  }
+
   getDetallesAsesorias(): Observable<any> {
     return this.http.get(`${this.apiUrl}/asesorias`);
   }

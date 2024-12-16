@@ -14,6 +14,7 @@ import { DetalleDisponiblesComponent } from './detalle-disponibles/detalle-dispo
 import { AceptacionCursosComponent } from './aceptacion-cursos/aceptacion-cursos.component';
 import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
 import { CrearAsesoriaComponent } from './crear-asesoria/crear-asesoria.component';
+import { DetalleTutorComponent } from './detalle-tutor/detalle-tutor.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -31,6 +32,7 @@ export const routes: Routes = [
   {path: 'solicitud', component: SolicitudComponent},
   {path: 'calendario', component: CalendarioComponent},
   {path: 'detalle2/:id', component: DetalleDisponiblesComponent},
+  {path: 'detallet/:id', component: DetalleTutorComponent},
   {path: 'aceptacion/:id', component: AceptacionCursosComponent},
   {path: 'creacion', component: CrearAsesoriaComponent},
   
