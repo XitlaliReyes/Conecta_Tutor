@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
         const to = 'al'+ this.user.id + '@edu.uaa.mx'; 
         const subject = 'Bienvenido a nuestro sistema';
         const text = `Hola ${this.user.nombre},\n\nGracias por registrarte en Conecta Tutor. ¡Bienvenido!`;
-        const html = `<p>Hola ${this.user.nombre},</p><p>Gracias por registrarte en nuestro sistema. ¡Bienvenido!</p>`;
+        const html = `<p>Hola ${this.user.nombre},</p><p>Gracias por registrarte en Conecta Tutor. ¡Bienvenido!</p>`;
         
         // Enviar el correo
         this.apiService.sendEmail(to, subject, text, html).subscribe(
