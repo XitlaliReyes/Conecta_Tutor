@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/carreras`);
   }
 
+  getAllAsesorias(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/asesorias`);
+  }
+
   agregarUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }

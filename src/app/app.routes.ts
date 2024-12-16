@@ -12,6 +12,7 @@ import { SolicitudComponent } from './solicitud/solicitud.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import { DetalleDisponiblesComponent } from './detalle-disponibles/detalle-disponibles.component';
 import { AceptacionCursosComponent } from './aceptacion-cursos/aceptacion-cursos.component';
+import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
 import { CrearAsesoriaComponent } from './crear-asesoria/crear-asesoria.component';
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'perfil-alumno', component: PerfilAlumnoComponent},
   { path: 'perfil-tutor', component: PerfilTutorComponent},
+  {path: 'perfil-admin', component: PerfilAdminComponent},
   { path: 'updateusr', component: UpdateusrComponent},
   { path: 'detalle/:id', component: DetalleAsesoriaComponent },
   {path: 'solicitud', component: SolicitudComponent},
