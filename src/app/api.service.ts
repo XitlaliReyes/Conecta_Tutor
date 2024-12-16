@@ -27,6 +27,14 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }
 
+  agregarCarrera(nombre: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/carrera`, { nombre });
+  }
+  
+  agregarMateria(nombre: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/materia`, { nombre });
+  }
+  
   altaAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
     const body = { idAsesoria, idUsuario };
     return this.http.post<void>(`${this.apiUrl}/alta`, body);
@@ -57,6 +65,11 @@ export class ApiService {
     return this.http.put(url, solicitud);
   }
 
+  guardarMaterias(solicitud: any): Observable<any> {
+    const url = `${this.apiUrl}/actualizar-carrera-materias`;
+    return this.http.put(url, solicitud);
+  }
+
   getAsesoriasUsuario(id:number): Observable<any> {
     const url = `${this.apiUrl}/asesorias/alumno/${id}`;
     return this.http.get<any>(url);
@@ -76,6 +89,11 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/asesorias`);
   }
 
+  getCarreraMaterias(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/carrera-materias`);
+  }
+
+
   getAsesorias(id:number): Observable<any> {
     const url = `${this.apiUrl}/asesorias/${id}`;
     return this.http.get<any>(url);
@@ -88,6 +106,10 @@ export class ApiService {
 
   getMateria(): Observable<any> {
     return this.http.get(`${this.apiUrl}/materias`);
+  }
+
+  getAsesores(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/asesores`);
   }
 
   getLugar(): Observable<any> {

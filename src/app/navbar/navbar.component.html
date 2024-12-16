@@ -1,22 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-    <a 
-      *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'" 
+      <a 
+      *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor' || getUsuarioOcupacion() === 'admin'" 
       class="navbar-brand" 
-      [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : '/perfil-tutor'">
+      [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : (getUsuarioOcupacion() === 'tutor' ? '/perfil-tutor' : '/perfil-admin')">
       U A A
-    </a>
+    </a>    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-nav ms-auto">
       <a 
-        *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'" 
-        class="nav-link" 
-        [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : '/perfil-tutor'">
+      *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor' || getUsuarioOcupacion() === 'admin'" 
+      class="nav-link" 
+      [routerLink]="getUsuarioOcupacion() === 'alumno' ? '/perfil-alumno' : (getUsuarioOcupacion() === 'tutor' ? '/perfil-tutor' : '/perfil-admin')">
         Inicio
       </a>
-      <a class="nav-link" [routerLink]="'/calendario'">Calendario</a>
+      
+      <a *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'"   class="nav-link" [routerLink]="'/calendario'">Calendario</a>    
       <a 
       *ngIf="getUsuarioOcupacion() === 'alumno'" 
       class="nav-link" 
@@ -30,6 +31,23 @@
       [routerLink]="'/creacion'"
     >
       Crear Asesoría
+    </a>
+
+    <a 
+      *ngIf="getUsuarioOcupacion() === 'admin'" 
+      class="nav-link" 
+      [routerLink]="'/mostrarusuarios'"
+    >
+      Usuarios
+    </a>
+
+    
+    <a 
+      *ngIf="getUsuarioOcupacion() === 'admin'" 
+      class="nav-link" 
+      [routerLink]="'/altas'"
+    >
+      A
     </a>
       <a class="nav-link" [routerLink]="'/updateusr'"><i class="fa-solid fa-user"></i></a>
       <a *ngIf="isLoggedIn()" class="nav-link" (click)="logout()">

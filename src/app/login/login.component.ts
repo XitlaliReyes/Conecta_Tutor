@@ -3,6 +3,12 @@ import { Router, RouterModule } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FormsModule } from '@angular/forms';
 
+interface Usuario {
+  id: string;
+  password: string;
+  ocupacion: string;
+}
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -10,45 +16,40 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-
 export class LoginComponent {
 
   credentials = {
     id: '',
     password: ''
   };
-  usuarios: any[] = [];
 
   constructor(private apiService: ApiService, private router: Router) { }
 
   onSubmit() {
     this.apiService.getUsuarios().subscribe(
-      (data) => {
-        this.usuarios = data;
+      (usuarios: Usuario[]) => {
+        // Ahora que tenemos los usuarios tipados, podemos usar find sin problemas
+        const usuario = usuarios.find(u => u.id === this.credentials.id && u.password === this.credentials.password);
+
+        if (usuario) {
+          // Almacenar los datos en sessionStorage
+          sessionStorage.setItem('usuarioId', usuario.id);
+          sessionStorage.setItem('usuarioOcupacion', usuario.ocupacion);
+
+          if (usuario.ocupacion === 'alumno') {
+            this.router.navigate(['/perfil-alumno']);
+          } else if (usuario.ocupacion === 'tutor') {
+            this.router.navigate(['/perfil-tutor']);
+          } else if (usuario.ocupacion === 'admin') {
+            this.router.navigate(['/perfil-admin']);
+          }
+        } else {
+          console.log('Credenciales incorrectas');
+        }
       },
       (error) => {
         console.error('Error al obtener usuarios:', error);
       }
     );
-  
-    for (let i = 0; i < this.usuarios.length; i++) {
-      if (this.usuarios[i].id === this.credentials.id && this.usuarios[i].password === this.credentials.password) {
-        sessionStorage.setItem('usuarioId', this.usuarios[i].id);
-        sessionStorage.setItem('usuarioOcupacion', this.usuarios[i].ocupacion); // Guarda la ocupación del usuario  
-
-        // Redirigir a la página de perfil según el tipo de usuario
-        if (this.usuarios[i].ocupacion === 'alumno') {
-          this.router.navigate(['/perfil-alumno']);
-        } else if (this.usuarios[i].ocupacion === 'tutor') {
-          this.router.navigate(['/perfil-tutor']);
-        } else if (this.usuarios[i].ocupacion === 'admin') {
-          this.router.navigate(['/perfil-admin']);
-        }
-        return;
-      }
-    }
-
-    console.log('Formulario enviado');
   }
-
 }

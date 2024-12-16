@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-perfil-admin',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NavbarComponent],
   templateUrl: './perfil-admin.component.html',
   styleUrl: './perfil-admin.component.css'
 })
 export class PerfilAdminComponent implements OnInit {
   asesorias: any[] = [];
   asesoriasActivas: any[] = [];
+  asesoriasPendientes: any[] = [];
   usuarioId: number = 0;
 
   constructor(private apiService: ApiService, private router: Router) { }
@@ -35,6 +37,7 @@ export class PerfilAdminComponent implements OnInit {
 
         // Filtrar las asesorías activas después de recibir los datos
         this.asesoriasActivas = this.asesorias.filter(asesoria => asesoria.estado === 'Activo');
+        this.asesoriasPendientes = this.asesorias.filter(asesoria => asesoria.estado === 'Pendiente');
       },
       (error) => {
         console.error('Error al obtener asesorías:', error);

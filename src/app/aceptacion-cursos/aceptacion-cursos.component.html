@@ -12,7 +12,7 @@
     <div class="info-item">
         <p class="info-title">Fecha de Inicio:</p>
         <input type="date" [(ngModel)]="selectedFecha" class="form-control" />
-      </div>
+    </div>
     <hr>
     <div class="info-item">
       <p class="info-title">Dias de la Asesoria:</p>
@@ -24,6 +24,17 @@
       <p>{{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}</p>
     </div>
     <hr>
+
+    <div *ngIf="ocupacion === 'admin';">
+      <div class="info-item">
+        <p class="info-title">Maestro:</p>
+        <select [(ngModel)]="selectedMaesto" class="form-select">
+          <option *ngFor="let asesor of maestros" [value]="asesor.id">{{ asesor.nombre }}</option>
+        </select>
+      </div>
+    </div>
+
+<hr>
     <div class="info-item">
       <p class="info-title">Lugar:</p>
       <select [(ngModel)]="selectedLugar" class="form-select">

@@ -1,20 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="'/perfil-admin'">
-        U A A
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" [routerLink]="'/perfil-admin'">Inicio</a>
-        <a class="nav-link" [routerLink]="'/updateusr'"><i class="fa-solid fa-user"></i></a>
-        <a *ngIf="isLoggedIn()" class="nav-link" (click)="logout()">
-          <i class="fa-solid fa-right-from-bracket"></i>
-        </a>
-      </div>
-    </div>
-  </nav>
+<app-navbar></app-navbar>
   
   <div class="perfil-tutor">
     <h1>Bienvenido, Admin</h1>
@@ -40,7 +24,7 @@
                 <i class="fas fa-clock"></i> <strong>Horario:</strong> {{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}
               </p>
               <div class="d-flex justify-content-center">
-                <a class="btn btn-primary" [routerLink]="['/detalle', asesoria.id_asesoria]">
+                <a class="btn btn-primary" [routerLink]="['/detallet', asesoria.id_asesoria]">
                   Ver más
                 </a>
               </div>
@@ -49,5 +33,39 @@
         </div>
       </div>
     </div>
+
+    <div class="container mt-5">
+      <h2 class="mt-4">Cursos Pendientes</h2>
+  
+      <!-- Mensaje cuando no hay asesorías disponibles -->
+      <div *ngIf="asesoriasActivas.length === 0" class="text-center text-muted mt-3">
+        No hay asesorías disponibles.
+      </div>
+  
+      <!-- Mostrar tarjetas de asesorías activas -->
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-4" *ngIf="asesoriasPendientes.length > 0">
+        <div class="col" *ngFor="let asesoria of asesoriasPendientes">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ asesoria.materiaNombre }}</h5>
+              <p class="card-text">
+                <i class="fas fa-calendar-day"></i> <strong>Inicio:</strong> {{ asesoria.fecha_inicio }} <br>
+                <i class="fas fa-calendar-check"></i> <strong>Fin:</strong> {{ asesoria.fecha_fin }} <br>
+                <i class="fas fa-calendar-week"></i> <strong>Días:</strong> {{ asesoria.dias }} <br>
+                <i class="fas fa-clock"></i> <strong>Horario:</strong> {{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}
+              </p>
+              <div class="d-flex justify-content-center">
+                <a class="btn btn-primary" [routerLink]="['/aceptacion', asesoria.id_asesoria]">
+                  Ver más
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
   
