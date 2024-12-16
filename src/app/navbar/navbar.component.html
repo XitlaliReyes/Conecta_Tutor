@@ -17,7 +17,6 @@
         Inicio
       </a>
       
-      <a *ngIf="getUsuarioOcupacion() === 'alumno' || getUsuarioOcupacion() === 'tutor'"   class="nav-link" [routerLink]="'/calendario'">Calendario</a>    
       <a 
       *ngIf="getUsuarioOcupacion() === 'alumno'" 
       class="nav-link" 
