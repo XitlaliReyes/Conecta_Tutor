@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterModule, FormsModule, CommonModule],
   templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  styleUrls: ['./registro.component.css']
 })
 
 export class RegistroComponent implements OnInit {
@@ -44,14 +44,34 @@ export class RegistroComponent implements OnInit {
     this.successMessage = '';
     this.errorMessage = '';
     
+    if (this.user.id_carrera === 0) {
+      this.user.id_carrera = null;
+    }
     // Asegurarse de que ambos id y id_carrera sean números
     this.user.id = +this.user.id!;          // Convertir id a número
-    this.user.id_carrera = +this.user.id_carrera!; // Convertir id_carrera a número
+    this.user.id_carrera = this.user.id_carrera !== null ? +this.user.id_carrera : null; 
 
     this.apiService.agregarUsuario(this.user).subscribe(
       (response) => {
         console.log('Usuario registrado:', response);
         this.successMessage = 'Registro exitoso. Redirigiendo a inicio de sesión...';
+
+        // Llamada para enviar el correo electrónico después de un registro exitoso
+        const to = 'al'+ this.user.id + '@edu.uaa.mx'; // Asegúrate de tener la lógica para obtener el correo real
+        const subject = 'Bienvenido a nuestro sistema';
+        const text = `Hola ${this.user.nombre},\n\nGracias por registrarte en Conecta Tutor. ¡Bienvenido!`;
+        const html = `<p>Hola ${this.user.nombre},</p><p>Gracias por registrarte en nuestro sistema. ¡Bienvenido!</p>`;
+        
+        // Enviar el correo
+        this.apiService.sendEmail(to, subject, text, html).subscribe(
+          emailResponse => {
+            console.log('Correo enviado con éxito:', emailResponse);
+          },
+          emailError => {
+            console.error('Error al enviar el correo:', emailError);
+          }
+        );
+
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 1000);

@@ -114,9 +114,14 @@ export class ApiService {
   }
   eliminarAsesoriaTutor(idAsesoria: number, idUsuario: number): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/baja-asesoria`, { id_asesoria: idAsesoria, id_maestro: idUsuario });
-}
+  }
 
-
+  // sendEmail(to: string, subject: string, text: string, html: string) {
+  //   return this.http.post(`${this.apiUrl}/send-email`, { to, subject, text, html });
+  // }
   
+  sendEmail(to: string, subject: string, text: string, html: string) {
+    return this.http.post(`${this.apiUrl}/send-email`, { to, subject, text, html }, { responseType: 'text' });
+  }
   
 }
