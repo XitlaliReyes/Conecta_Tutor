@@ -119,6 +119,7 @@ export class CrearAsesoriaComponent implements OnInit {
     this.apiService.crearAsesoria(asesoria).subscribe(
       (response) => {
         alert('Asesoría creada exitosamente.');
+        location.reload(); 
       },
       (error) => {
         console.error('Error al crear la asesoría:', error);
