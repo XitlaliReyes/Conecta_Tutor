@@ -15,6 +15,7 @@ export class DetalleTutorComponent {
   asesoria: any = null;
   usuarioId: number = 0;
   alumnos: any[] = [];
+  ocupacion: string = '';
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private router: Router) {}
 
@@ -22,6 +23,15 @@ export class DetalleTutorComponent {
     const storedId = sessionStorage.getItem('usuarioId');
     if (storedId) {
       this.usuarioId = +storedId; 
+      this.usuarioId = +storedId;
+      this.apiService.obtenerUsuario(this.usuarioId).subscribe(
+        (usuario) => {
+          this.ocupacion = usuario.ocupacion; 
+        },
+        (error) => {
+          console.error('Error al obtener datos del usuario:', error);
+        }
+      );
     } else {
       console.error('Usuario no autenticado. No se encontró el id del usuario en sessionStorage.');
       return; 
@@ -57,7 +67,7 @@ export class DetalleTutorComponent {
   }
 
   baja(): void {
-    if (this.asesoria && this.usuarioId) {
+    if (this.asesoria && this.usuarioId && this.ocupacion==="tutor") {
         const idAsesoria = this.asesoria.id_asesoria;
         const idUsuario = this.usuarioId;
 
@@ -71,8 +81,8 @@ export class DetalleTutorComponent {
                 alert('Ocurrió un error al darse de baja. Inténtalo nuevamente.');
             }
         );
-    } else {
-        alert('No se encontró la asesoría o el usuario para dar de baja.');
-    }
+    }else {
+          alert('No se encontró la asesoría o el usuario para dar de baja.');
+      }
 }
 }

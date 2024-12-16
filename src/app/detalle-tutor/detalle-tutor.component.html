@@ -52,11 +52,11 @@
             <div class="alert alert-warning text-center">
               No hay alumnos inscritos en esta asesoría.
             </div>
-          </ng-template>
+          </ng-template>      
           
       </div>
     <hr>
-    <div class="text-center mt-4">
+    <div *ngIf="ocupacion === 'tutor';" class="text-center mt-4">
         <button class="btn btn-primary" (click)="baja()">Cancelar Asesoría</button>
     </div>
     <br><br>

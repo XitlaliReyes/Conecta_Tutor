@@ -14,6 +14,7 @@ import { ApiService } from '../api.service';
 export class PerfilAdminComponent implements OnInit {
   asesorias: any[] = [];
   asesoriasActivas: any[] = [];
+  asesoriasPendientes: any[] = [];
   usuarioId: number = 0;
 
   constructor(private apiService: ApiService, private router: Router) { }
@@ -35,6 +36,7 @@ export class PerfilAdminComponent implements OnInit {
 
         // Filtrar las asesorías activas después de recibir los datos
         this.asesoriasActivas = this.asesorias.filter(asesoria => asesoria.estado === 'Activo');
+        this.asesoriasPendientes = this.asesorias.filter(asesoria => asesoria.estado === 'Pendiente');
       },
       (error) => {
         console.error('Error al obtener asesorías:', error);

@@ -90,6 +90,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/materias`);
   }
 
+  getAsesores(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/asesores`);
+  }
+
   getLugar(): Observable<any> {
     return this.http.get(`${this.apiUrl}/lugares`);
   }
