@@ -57,7 +57,7 @@ export class RegistroComponent implements OnInit {
         this.successMessage = 'Registro exitoso. Redirigiendo a inicio de sesión...';
 
         // Llamada para enviar el correo electrónico después de un registro exitoso
-        const to = 'al'+ this.user.id + '@edu.uaa.mx'; // Asegúrate de tener la lógica para obtener el correo real
+        const to = 'al'+ this.user.id + '@edu.uaa.mx'; 
         const subject = 'Bienvenido a nuestro sistema';
         const text = `Hola ${this.user.nombre},\n\nGracias por registrarte en Conecta Tutor. ¡Bienvenido!`;
         const html = `<p>Hola ${this.user.nombre},</p><p>Gracias por registrarte en nuestro sistema. ¡Bienvenido!</p>`;
