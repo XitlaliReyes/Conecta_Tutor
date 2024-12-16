@@ -4,7 +4,7 @@
   <h1>Crear Asesoría</h1>
 
   <!-- Selección de materia -->
-<label for="materias">Materias:</label>
+<label for="materias">Materia:</label>
 <select id="materias" [(ngModel)]="materiasSeleccionadas">
   <option *ngFor="let materia of materias" [value]="materia.id">
     {{ materia.nombre }}
@@ -12,6 +12,7 @@
 </select>
 
 <!-- Selección de lugar -->
+<label for="materias">Lugar:</label>
 <select id="lugar" [(ngModel)]="lugarSeleccionado">
   <option *ngFor="let lugar of lugares" [value]="lugar.id_lugar">
     {{ lugar.nombre }}
@@ -40,9 +41,6 @@
   <!-- Selección de fecha de inicio y fin -->
   <label for="fechaInicio">Fecha de inicio:</label>
   <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" />
-
-  <label for="fechaFin">Fecha de fin:</label>
-  <input type="date" id="fechaFin" [(ngModel)]="fechaFin" />
 
   <!-- Selección de horario -->
   <label for="horaInicio">Hora de inicio:</label>
