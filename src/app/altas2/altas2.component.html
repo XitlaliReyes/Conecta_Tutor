@@ -1,0 +1,51 @@
+<!-- carrera-materia.component.html -->
+<div class="container mt-5">
+    <h2 class="text-center">Agregar Carrera o Materia</h2>
+  
+    <!-- Formulario para agregar carrera -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Agregar Carrera</h5>
+        <form (ngSubmit)="agregarCarrera()">
+          <div class="form-group">
+            <label for="nombreCarrera">Nombre de la Carrera</label>
+            <input
+              type="text"
+              id="nombreCarrera"
+              class="form-control"
+              [(ngModel)]="nombreCarrera"
+              name="nombreCarrera"
+              placeholder="Ingresa el nombre de la carrera"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Agregar Carrera</button>
+        </form>
+      </div>
+    </div>
+  
+    <hr class="my-4">
+  
+    <!-- Formulario para agregar materia -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Agregar Materia</h5>
+        <form (ngSubmit)="agregarMateria()">
+          <div class="form-group">
+            <label for="nombreMateria">Nombre de la Materia</label>
+            <input
+              type="text"
+              id="nombreMateria"
+              class="form-control"
+              [(ngModel)]="nombreMateria"
+              name="nombreMateria"
+              placeholder="Ingresa el nombre de la materia"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Agregar Materia</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

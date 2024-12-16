@@ -27,6 +27,14 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }
 
+  agregarCarrera(nombre: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/carrera`, { nombre });
+  }
+  
+  agregarMateria(nombre: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/materia`, { nombre });
+  }
+  
   altaAsesoriaUsuario(idAsesoria: number, idUsuario: number): Observable<void> {
     const body = { idAsesoria, idUsuario };
     return this.http.post<void>(`${this.apiUrl}/alta`, body);
