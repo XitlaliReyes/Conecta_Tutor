@@ -3,6 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-asesoria',
@@ -20,11 +21,10 @@ export class CrearAsesoriaComponent implements OnInit {
   horarioInicio: string = '';
   horarioFin: string = '';
   fechaInicio: string = '';
-  fechaFin: string = '';
   usuarioId: number = 0;
   horarios: string[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     const storedId = sessionStorage.getItem('usuarioId');
@@ -88,7 +88,7 @@ export class CrearAsesoriaComponent implements OnInit {
       return;
     }
   
-    if (!this.fechaInicio || !this.fechaFin) {
+    if (!this.fechaInicio) {
       alert('Por favor selecciona un rango de fechas válido.');
       return;
     }
@@ -105,7 +105,7 @@ export class CrearAsesoriaComponent implements OnInit {
   
     const asesoria = {
       fecha_inicio: this.fechaInicio,
-      fecha_fin: this.fechaFin,
+      // fecha_fin: this.fechaFin,
       dias: this.diasSeleccionados.join(' y '),
       horario_inicio: this.horarioInicio,
       id_materia: Number(this.materiasSeleccionadas), 
@@ -119,7 +119,7 @@ export class CrearAsesoriaComponent implements OnInit {
     this.apiService.crearAsesoria(asesoria).subscribe(
       (response) => {
         alert('Asesoría creada exitosamente.');
-        location.reload(); 
+        this.router.navigate(['/perfil-tutor']);
       },
       (error) => {
         console.error('Error al crear la asesoría:', error);

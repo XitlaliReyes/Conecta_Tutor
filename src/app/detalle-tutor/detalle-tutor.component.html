@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h1 class="text-center">Detalles de la Asesoría</h1>
+
+  <div class="container mt-5">
+    <div *ngIf="asesoria" class="info-container mt-4">
+      <div class="info-item">
+        <p class="info-title">Materia:</p>
+        <p>{{ asesoria.materiaNombre }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Fecha:</p>
+        <p>Inicio: {{ asesoria.fecha_inicio }} - Fin: {{ asesoria.fecha_fin }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Horario:</p>
+        <p>{{ asesoria.horario_inicio }} - {{ asesoria.horario_fin }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Lugar:</p>
+        <p>{{ asesoria.lugarNombre }}</p>
+      </div>
+      <hr>
+      <div class="info-item">
+        <p class="info-title">Impartido por:</p>
+        <p>{{ asesoria.maestroNombre }}</p>
+      </div>
+    <hr>
+      <div class="info-item">
+        <p class="info-title">Alumnos Inscritos:</p>
+        <table *ngIf="alumnos.length > 0; else noAlumnos" class="table table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of alumnos">
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nombreCompleto }}</td>
+                <td>{{ usuario.carrera }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <ng-template #noAlumnos>
+            <div class="alert alert-warning text-center">
+              No hay alumnos inscritos en esta asesoría.
+            </div>
+          </ng-template>
+          
+      </div>
+    <hr>
+    <br><br>
+      
+      <!-- <div class="text-center mt-4">
+        <button class="btn btn-primary" (click)="baja()">Dar de baja</button>
+      </div> -->
+
+    </div>
+
+    <div *ngIf="!asesoria" class="text-center text-muted mt-3">
+      No se encontraron los detalles de esta asesoría.
+    </div>
+  </div>
+</div>
