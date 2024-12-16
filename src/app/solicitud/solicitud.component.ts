@@ -22,7 +22,7 @@ export class SolicitudComponent implements OnInit {
   materiasSeleccionadas: string[] = [];
   diasSeleccionados: string[] = [];
   horaSeleccionada: string = '';
-  asesoriasSolicitadas: any[] = [];  // Aquí se almacenarán las asesorías solicitadas
+  asesoriasSolicitadas: any[] = []; 
   usuarioId: number = 0;
 
   constructor(private apiService: ApiService) {}
@@ -80,7 +80,6 @@ export class SolicitudComponent implements OnInit {
       return;
     }
 
-    // Combina los días seleccionados en una cadena separada por "y"
     const diasString = this.diasSeleccionados.join(' y ');
 
     const solicitud = {

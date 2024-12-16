@@ -77,7 +77,10 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-
+  getMateria(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/materias`);
+  }
+  
   getLugar(): Observable<any> {
     return this.http.get(`${this.apiUrl}/lugares`);
   }
@@ -96,5 +99,8 @@ export class ApiService {
   
   enviarSolicitud(solicitud: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/asesoria`, solicitud);
+  }
+  crearAsesoria(asesoria: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/crear-asesoria`, asesoria);
   }
 }
