@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.100.20:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -27,11 +27,11 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }
 
-  agregarCarrera(nombre: string): Observable<any> {
+  agregarCarrera(nombre: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/carrera`, { nombre });
   }
   
-  agregarMateria(nombre: string): Observable<any> {
+  agregarMateria(nombre: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/materia`, { nombre });
   }
   
@@ -146,15 +146,13 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/send-email`, { to, subject, text, html }, { responseType: 'text' });
   }
   
-  crearEventoCalendario(datosEvento: {
-    dias: string;
-    horario_inicio: string;
-    horario_fin: string;
-    id_materia: number;
-    id_lugar: number;
-    id_maestro: number;
-    fecha_inicio: string;
-  }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/calendario`, datosEvento);
+  crearEventoCalendario(datosEvento: any): Observable<any> {
+    //return this.http.post<any>(`${this.apiUrl}/calendario`, datosEvento);
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(`${this.apiUrl}/calendario`, datosEvento, { headers });
   }
+
+  
+    
 }

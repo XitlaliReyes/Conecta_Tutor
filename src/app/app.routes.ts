@@ -16,6 +16,7 @@ import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
 import { CrearAsesoriaComponent } from './crear-asesoria/crear-asesoria.component';
 import { DetalleTutorComponent } from './detalle-tutor/detalle-tutor.component';
 import { AltasComponent } from './altas/altas.component';
+import { Altas2Component } from './altas2/altas2.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'usuarios', component: MostrarusuariosComponent },
   { path: 'main', component: MainComponent },
   { path: 'altas', component: AltasComponent },
+  { path: 'altas2', component: Altas2Component },
   { path: 'mostrarusuarios', component: MostrarusuariosComponent},
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent},

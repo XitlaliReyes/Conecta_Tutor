@@ -111,7 +111,7 @@ export class AceptacionCursosComponent implements OnInit{
       const nuevosDatos = {
         fecha_inicio: this.selectedFecha,
         id_lugar: +this.selectedLugar,
-        id_maestro: this.selectedMaesto
+        id_maestro: +this.selectedMaesto
       };
   
       this.apiService.actualizarAsesoria(this.asesoria.id_asesoria, nuevosDatos).subscribe(

@@ -51,20 +51,24 @@ export class PerfilAlumnoComponent implements OnInit {
 
   crearEventosCalendario(): void {
     this.asesoriasAsignadas.forEach((asesoria) => {
+      // Crear un nuevo objeto para cada evento
       const datosEvento = {
         dias: asesoria.dias,
         horario_inicio: asesoria.horario_inicio,
         horario_fin: asesoria.horario_fin,
-        id_materia: asesoria.id_materia,
-        id_lugar: asesoria.id_lugar,
-        id_maestro: asesoria.id_maestro,
-        fecha_inicio: asesoria.fecha_inicio,
+        materiaNombre: asesoria.materiaNombre,
+        lugarNombre: asesoria.lugarNombre,
+        maestroNombre: asesoria.maestroNombre,
+        fecha_inicio: asesoria.fecha_inicio
       };
-
+  
+      console.log('Enviando datosEvento:', datosEvento);
+  
+      // Llamar a la API con el nuevo objeto
       this.apiService.crearEventoCalendario(datosEvento).subscribe(
         (response) => {
           console.log(`Evento creado para asesoría ${asesoria.id_asesoria}:`, response);
-          alert(`Evento creado: ${response.link}`);
+          alert(`Evento creado exitosamente`);
         },
         (error) => {
           console.error(`Error al crear evento para asesoría ${asesoria.id_asesoria}:`, error);
@@ -73,4 +77,5 @@ export class PerfilAlumnoComponent implements OnInit {
       );
     });
   }
+  
 }

@@ -44,7 +44,7 @@ export class DetalleDisponiblesComponent {
         const idAsesoria = this.asesoria.id_asesoria;
         const idUsuario = this.usuarioId;
 
-        this.apiService.eliminarAsesoriaTutor(idAsesoria, idUsuario).subscribe(
+        this.apiService.eliminarAsesoriaUsuario(idAsesoria, idUsuario).subscribe(
             (response) => {
                 alert('La asesoría ha sido dada de baja.');
                 this.router.navigate(['/perfil-alumno']);
