@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.100.20:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.137.42:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +24,9 @@ export class ApiService {
   }
 
   agregarUsuario(usuario: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/usuarios`, usuario);
-  }
+  const ruta = usuario.ocupacion === 'alumno' ? '/alumnos' : '/tutores';
+  return this.http.post(`${this.apiUrl}${ruta}`, usuario);
+}
 
   agregarCarrera(nombre: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/carrera`, { nombre });

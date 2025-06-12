@@ -1,52 +1,60 @@
 <div class="register">
-    <div class="left-column">
-      <img src="/assets/img/registro.jpg" alt="Imagen de registro">
-    </div>
-    <div class="right-column">
-      <h1>Registro</h1>
-      
-      <form (ngSubmit)="onSubmit()" #form="ngForm">
-        <label for="id">ID:</label>
-        <input type="number" id="id" [(ngModel)]="user.id" name="id" required>
-      
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" [(ngModel)]="user.nombre" name="nombre" required>
-      
-        <label for="apellidos">Apellidos:</label>
-        <input type="text" id="apellidos" [(ngModel)]="user.apellidos" name="apellidos" required>
-      
-        <label for="contraseña">Contraseña:</label>
-        <input type="password" id="contraseña" [(ngModel)]="user.password" name="contraseña" required>
-      
-        <label for="ocupacion">Tipo de Usuario:</label>
-        <select id="ocupacion" [(ngModel)]="user.ocupacion" name="tipo" required>
-          <option value="alumno">Alumno</option>
-          <option value="tutor">Tutor</option>
-        </select>
+  <div class="left-column">
+    <img src="/assets/img/registro.jpg" alt="Imagen de registro">
+  </div>
+  <div class="right-column">
+    <h1>Registro</h1>
 
-        <!-- Mostrar el select de carrera solo si el tipo de usuario es "alumno" -->
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <label for="id">ID:</label>
+      <input type="number" id="id" [(ngModel)]="user.id" name="id" required>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="user.nombre" name="nombre" required>
+
+      <label for="apellidoPaterno">Apellido Paterno:</label>
+      <input type="text" id="apellidoPaterno" [(ngModel)]="user.apellidoPaterno" name="apellidoPaterno" required>
+
+      <label for="apellidoMaterno">Apellido Materno:</label>
+      <input type="text" id="apellidoMaterno" [(ngModel)]="user.apellidoMaterno" name="apellidoMaterno" required>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+
+      <label for="ocupacion">Tipo de Usuario:</label>
+      <select id="ocupacion" [(ngModel)]="user.ocupacion" name="ocupacion" required>
+        <option value="alumno">Alumno</option>
+        <option value="tutor">Tutor</option>
+      </select>
+
+      <!-- Campos específicos para alumno -->
       <div *ngIf="user.ocupacion === 'alumno'">
-        <label for="carrera">Carrera:</label>
-        <select id="carrera" [(ngModel)]="user.id_carrera" name="id_carrera" required>
-          <option *ngFor="let carrera of carreras" [value]="carrera.id">
-            {{ carrera.nombre }}
+        <label for="idCarrera">Carrera:</label>
+        <select id="idCarrera" [(ngModel)]="user.idCarrera" name="idCarrera" required>
+          <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
+            {{ carrera.Nombre }}
           </option>
         </select>
+
+        <label for="semestre">Semestre:</label>
+        <input type="number" id="semestre" [(ngModel)]="user.semestre" name="semestre" required>
       </div>
-      
-        <button type="submit" [disabled]="!form.valid">Registrarme</button>
-      </form>
-      
-  
-      <!-- Mostrar mensaje de éxito -->
-      <div *ngIf="successMessage" class="alert alert-success">
-        {{ successMessage }}
+
+      <!-- Campos específicos para tutor -->
+      <div *ngIf="user.ocupacion === 'tutor'">
+        <label for="nivelAcademico">Nivel Académico:</label>
+        <input type="text" id="nivelAcademico" [(ngModel)]="user.nivelAcademico" name="nivelAcademico" required>
       </div>
-  
-      <!-- Mostrar mensaje de error -->
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{ errorMessage }}
-      </div>
+
+      <button type="submit" [disabled]="!form.valid">Registrarme</button>
+    </form>
+
+    <!-- Mensajes -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
     </div>
   </div>
-  
+</div>
