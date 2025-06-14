@@ -25,7 +25,7 @@ export class LoginComponent {
 
   constructor(private apiService: ApiService, private router: Router) { }
 
-  onSubmit() {
+  /*onSubmit() {
     this.apiService.getUsuarios().subscribe(
       (usuarios: Usuario[]) => {
         // Ahora que tenemos los usuarios tipados, podemos usar find sin problemas
@@ -51,5 +51,25 @@ export class LoginComponent {
         console.error('Error al obtener usuarios:', error);
       }
     );
-  }
+  }*/
+
+    onSubmit() {
+      this.apiService.loginUsuario(this.credentials).subscribe(
+        (response: any) => {
+          const usuario = response.usuario;
+          sessionStorage.setItem('usuarioId', usuario.id);
+          sessionStorage.setItem('usuarioOcupacion', usuario.ocupacion);
+    
+          if (usuario.ocupacion === 'alumno') {
+            this.router.navigate(['/perfil-alumno']);
+          } else if (usuario.ocupacion === 'tutor') {
+            this.router.navigate(['/perfil-tutor']);
+          }
+        },
+        (error) => {
+          console.error('Error en login:', error.error?.error || 'Credenciales inválidas');
+        }
+      );
+    }
+    
 }

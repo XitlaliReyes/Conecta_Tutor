@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.137.42:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.1.81:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
+  loginUsuario(credentials: { id: string, password: string }) {
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials);
+  }
+  
   getUsuarios(): Observable<any> {
     return this.http.get(`${this.apiUrl}/usuarios`);
   }
