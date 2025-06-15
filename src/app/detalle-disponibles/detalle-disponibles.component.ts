@@ -30,10 +30,17 @@ export class DetalleDisponiblesComponent {
     if (id) {
       this.apiService.getDetallesAsesorias().subscribe(
         (asesorias) => {
-          this.asesoria = asesorias.find((a: any) => a.id_asesoria === +id);
+          console.log('Asesorías recibidas:', asesorias);
+          console.log('ID recibido de ruta:', id);
+
+          this.asesoria = asesorias.find((a: any) => +a.id_asesoria === +id);
+
+          if (!this.asesoria) {
+            console.warn('No se encontró asesoría con id:', id);
+          }
         },
         (error) => {
-          console.error('Error al obtener la asesoría:', error);
+          console.error('Error al obtener asesorías:', error);
         }
       );
     }
