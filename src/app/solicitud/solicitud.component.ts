@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 interface Materia {
-  id: number;
-  nombre: string;
+  idMateria: number;
+  Nombre: string;
 }
 
 @Component({
@@ -66,7 +66,7 @@ export class SolicitudComponent implements OnInit {
 
   enviarSolicitud(): void {
     if (!this.materiasSeleccionadas.length) {
-      alert('Por favor selecciona al menos una materia.');
+      alert('Por favor selecciona una materia.');
       return;
     }
 
@@ -80,13 +80,11 @@ export class SolicitudComponent implements OnInit {
       return;
     }
 
-    const diasString = this.diasSeleccionados.join(' y ');
-
     const solicitud = {
-      dias: diasString,
+      dias: this.diasSeleccionados,
       horario_inicio: this.horaSeleccionada,
-      materia: this.materiasSeleccionadas.join(', '),
-      id_solicitante: this.usuarioId  // Incluir el ID del usuario
+      materia: this.materiasSeleccionadas[0],
+      idAlumno: this.usuarioId  // Incluir el ID del usuario
     };
 
     // Enviar solicitud de asesoría
