@@ -14,7 +14,7 @@
         <ng-container *ngFor="let usuario of usuarios">
           <tr *ngIf="usuario.ocupacion === 'alumno'">
             <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.Nombre }}</td>
             <td>{{ usuario.apellidos }}</td>
             <td>{{ getCarreraNombre(usuario.id_carrera) }}</td>
           </tr>

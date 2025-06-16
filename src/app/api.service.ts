@@ -55,10 +55,10 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
-  actualizarUsuario(id_asesoria: number, nuevosDatos: any): Observable<any> {
-    const url = `${this.apiUrl}/usuarios`;
-    return this.http.put(url, { id_asesoria, ...nuevosDatos });
-  }
+actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
+  const url = `${this.apiUrl}/usuarios`;
+  return this.http.put(url, { id, ...nuevosDatos });
+}
 
   actualizarAsesoria(id_asesoria:number, nuevosDatos: any): Observable<any>{
     const url = `${this.apiUrl}/asesoria`;
