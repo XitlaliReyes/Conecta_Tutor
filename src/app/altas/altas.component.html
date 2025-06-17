@@ -4,34 +4,34 @@
     <p>Selecciona las materias que pertenezcan a la carrera seleccionada</p>
     
     <!-- Seleccionar carrera -->
-    <div class="mb-3">
-      <label for="carrera" class="form-label">Selecciona tu Carrera</label>
-      <select class="form-select" id="carrera" [(ngModel)]="idCarreraSeleccionada">
-        <option *ngFor="let carrera of carreras" [value]="carrera.id">
-          {{ carrera.nombre }}
-        </option>
-      </select>
+<div class="mb-3">
+  <label for="carrera" class="form-label">Selecciona tu Carrera</label>
+  <select class="form-select" id="carrera" [(ngModel)]="idCarreraSeleccionada">
+    <option *ngFor="let carrera of carreras" [value]="carrera.idCarrera">
+      {{ carrera.Nombre }}
+    </option>
+  </select>
+</div>
+
+<!-- Seleccionar materias -->
+<div *ngIf="idCarreraSeleccionada" class="mb-3">
+  <label class="form-label">Selecciona las materias</label>
+  <div *ngFor="let materia of materias">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        [value]="materia.idMateria"
+        [(ngModel)]="materia.seleccionada"
+        (change)="toggleMateria(materia.idMateria, materia.seleccionada)"
+        id="materia-{{ materia.idMateria }}"
+      />
+      <label class="form-check-label" for="materia-{{ materia.idMateria }}">
+        {{ materia.Nombre }}
+      </label>
     </div>
-  
-    <!-- Seleccionar materias -->
-    <div *ngIf="idCarreraSeleccionada" class="mb-3">
-      <label class="form-label">Selecciona las materias</label>
-      <div *ngFor="let materia of materias">
-        <div class="form-check">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            [value]="materia.id"
-            [(ngModel)]="materia.seleccionada"
-            (change)="toggleMateria(materia.id, materia.seleccionada)"
-            id="materia-{{ materia.id }}"
-          />
-          <label class="form-check-label" for="materia-{{ materia.id }}">
-            {{ materia.nombre }}
-          </label>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
   
     <!-- Botón de guardar -->
     <button class="btn btn-primary" (click)="guardarMaterias()">Guardar Selección</button>
