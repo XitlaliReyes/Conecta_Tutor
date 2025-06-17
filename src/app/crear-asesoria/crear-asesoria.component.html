@@ -14,7 +14,7 @@
   <!-- Selección de lugar -->
   <label for="lugar">Lugar:</label>
   <select id="lugar" [(ngModel)]="lugarSeleccionado">
-    <option [value]="null">Selecciona un lugar</option>
+    <option [value]="0">Selecciona un lugar</option>
     <option *ngFor="let lugar of lugares" [value]="lugar.idLugar">
       {{ lugar.Nombre }}
     </option>
@@ -33,6 +33,8 @@
     <label class="btn btn-outline-primary" for="jueves">Jueves</label>
     <input type="checkbox" class="btn-check" id="viernes" (change)="agregarDia('Viernes')" />
     <label class="btn btn-outline-primary" for="viernes">Viernes</label>
+    <input type="checkbox" class="btn-check" id="sabado" (change)="agregarDia('Sábado')" />
+    <label class="btn btn-outline-primary" for="sabado">Sábado</label>
   </div>
 
   <!-- Selección de fecha de inicio -->
