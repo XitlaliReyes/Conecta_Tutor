@@ -126,7 +126,7 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
   }
 
   getAsesoriaPendientes(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/asesoriaspendientes`);
+    return this.http.get(`${this.apiUrl}/asesoriasPendientes`);
   }
 
   getAsesoriasSolicitadas(idUsuario: number): Observable<any[]> {

@@ -51,6 +51,7 @@ export class AceptacionCursosComponent implements OnInit{
   
 
     const idAsesoria = this.route.snapshot.paramMap.get('id');
+    
     if (idAsesoria) {
       this.getAsesoriaDetails(idAsesoria); 
     }
@@ -110,7 +111,7 @@ export class AceptacionCursosComponent implements OnInit{
       
       const nuevosDatos = {
         fecha_inicio: this.selectedFecha,
-        id_lugar: +this.selectedLugar,
+        idLugar: +this.selectedLugar,
         id_maestro: +this.selectedMaesto
       };
   
