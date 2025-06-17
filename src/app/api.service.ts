@@ -23,6 +23,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/usrandCarrera`);
   }
 
+  getDocentes(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/docentes`);
+  }
+
   getCarrera(): Observable<any> {
     return this.http.get(`${this.apiUrl}/carreras`);
   }
