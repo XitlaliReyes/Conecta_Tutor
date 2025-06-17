@@ -23,15 +23,9 @@ export class DetalleTutorComponent {
     const storedId = sessionStorage.getItem('usuarioId');
     if (storedId) {
       this.usuarioId = +storedId; 
-      this.usuarioId = +storedId;
-      this.apiService.obtenerUsuario(this.usuarioId).subscribe(
-        (usuario) => {
-          this.ocupacion = usuario.ocupacion; 
-        },
-        (error) => {
-          console.error('Error al obtener datos del usuario:', error);
-        }
-      );
+      this.ocupacion = sessionStorage.getItem('usuarioOcupacion') || '';
+      console.log('Ocupación cargada:', this.ocupacion);
+
     } else {
       console.error('Usuario no autenticado. No se encontró el id del usuario en sessionStorage.');
       return; 
@@ -67,22 +61,33 @@ export class DetalleTutorComponent {
   }
 
   baja(): void {
-    if (this.asesoria && this.usuarioId && this.ocupacion==="tutor") {
-        const idAsesoria = this.asesoria.id_asesoria;
-        const idUsuario = this.usuarioId;
+    if (
+      this.asesoria &&
+      this.usuarioId &&
+      (this.ocupacion === 'tutor' || this.ocupacion === 'admin')
+    ) {
+      const idAsesoria = this.asesoria.id_asesoria;
+      const idUsuario = this.usuarioId;
 
-        this.apiService.eliminarAsesoriaTutor(idAsesoria, idUsuario).subscribe(
-            (response) => {
-                alert('La asesoría ha sido dada de baja.');
-                this.router.navigate(['/perfil-tutor']);
-            },
-            (error) => {
-                console.error('Error al darse de baja:', error);
-                alert('Ocurrió un error al darse de baja. Inténtalo nuevamente.');
-            }
-        );
-    }else {
-          alert('No se encontró la asesoría o el usuario para dar de baja.');
-      }
-}
+      this.apiService.eliminarAsesoriaTutor(idAsesoria, idUsuario).subscribe(
+        (response) => {
+          alert('La asesoría ha sido dada de baja.');
+
+          // Redirige según el rol
+          if (this.ocupacion === 'admin') {
+            this.router.navigate(['/perfil-admin']);
+          } else {
+            this.router.navigate(['/perfil-tutor']);
+          }
+        },
+        (error) => {
+          console.error('Error al darse de baja:', error);
+          alert('Ocurrió un error al darse de baja. Inténtalo nuevamente.');
+        }
+      );
+    } else {
+      alert('No se encontró la asesoría o el usuario para dar de baja.');
+    }
+  }
+
 }
