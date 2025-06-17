@@ -43,7 +43,6 @@ export class DetalleTutorComponent {
       
       this.apiService.getDetallesAsesorias().subscribe(
         (asesorias) => {
-          console.log('Asesorías recibidas:', asesorias); // Asegúrate de que se reciben las asesorías
           console.log('Asesorías recibidas:', asesorias);
           this.asesoria = asesorias.find((a: any) => a.id_asesoria === +id);
           console.log('Asesoría seleccionada:', this.asesoria);
