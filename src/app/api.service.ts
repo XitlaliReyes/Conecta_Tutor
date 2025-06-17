@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/usuarios`);
   }
 
+  getUsrandCarrera(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/usrandCarrera`);
+  }
+
   getCarrera(): Observable<any> {
     return this.http.get(`${this.apiUrl}/carreras`);
   }
@@ -85,6 +89,7 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
     return this.http.get<any>(url);
   }
 
+  //Recupera los alumnos que estan inscritos en la asesoria
   getAlumnos(id_asesoria:string): Observable<any> {
     const url = `${this.apiUrl}/alumnos/${id_asesoria}`;
     return this.http.get<any>(url);
@@ -97,7 +102,6 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
   getCarreraMaterias(): Observable<any> {
     return this.http.get(`${this.apiUrl}/carrera-materias`);
   }
-
 
   getAsesorias(id:number): Observable<any> {
     const url = `${this.apiUrl}/asesorias/${id}`;
