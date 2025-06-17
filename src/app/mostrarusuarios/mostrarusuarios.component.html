@@ -8,6 +8,7 @@
           <th>Nombre</th>
           <th>Apellidos</th>
           <th>Carrera</th>
+          <th>Semestre</th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +17,8 @@
             <td>{{ usuario.id }}</td>
             <td>{{ usuario.Nombre }}</td>
             <td>{{ usuario.apellidos }}</td>
-            <td>{{ getCarreraNombre(usuario.id_carrera) }}</td>
+            <td>{{ usuario.nombreCarrera }}</td>
+            <td>{{ usuario.Semestre }}</td>
           </tr>
         </ng-container>
       </tbody>
@@ -39,12 +41,12 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let usuario of usuarios">
-        <tr *ngIf="usuario.ocupacion === 'tutor'">
-          <td>{{ usuario.id }}</td>
-          <td>{{ usuario.nombre }}</td>
-          <td>{{ usuario.apellidos }}</td>
-          <td>{{ usuario.ocupacion }}</td>
+      <ng-container *ngFor="let docente of docentes">
+        <tr *ngIf="docente.ocupacion === 'tutor'">
+          <td>{{ docente.id }}</td>
+          <td>{{ docente.Nombre }}</td>
+          <td>{{ docente.apellidos }}</td>
+          <td>{{ docente.NivelAcademico }}</td>
         </tr>
       </ng-container>
     </tbody>

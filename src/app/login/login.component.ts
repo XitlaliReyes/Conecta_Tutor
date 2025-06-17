@@ -64,6 +64,8 @@ export class LoginComponent {
             this.router.navigate(['/perfil-alumno']);
           } else if (usuario.ocupacion === 'tutor') {
             this.router.navigate(['/perfil-tutor']);
+          } else if (usuario.ocupacion === 'admin') {
+            this.router.navigate(['/perfil-admin']);
           }
         },
         (error) => {

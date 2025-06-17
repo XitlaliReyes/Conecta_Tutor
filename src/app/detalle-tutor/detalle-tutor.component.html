@@ -56,7 +56,7 @@
           
       </div>
     <hr>
-    <div *ngIf="ocupacion === 'tutor';" class="text-center mt-4">
+    <div *ngIf="ocupacion === 'tutor' || ocupacion === 'admin'" class="text-center mt-4">
         <button class="btn btn-primary" (click)="baja()">Cancelar Asesoría</button>
     </div>
     <br><br>

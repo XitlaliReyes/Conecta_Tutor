@@ -26,7 +26,9 @@ export class Altas2Component{
           this.nombreCarrera = ''; // Limpiar el campo
         },
         (error) => {
-          alert('Error al agregar la carrera: ' + error.message);
+          console.error('Error al agregar la carrera:', error);
+          const mensaje = error.error?.error || 'Ocurrió un error al agregar la carrera.';
+          alert(mensaje);
         }
       );
     }

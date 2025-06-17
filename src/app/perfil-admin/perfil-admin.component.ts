@@ -29,14 +29,12 @@ export class PerfilAdminComponent implements OnInit {
       return;
     }
 
-    // Llamada a la API para obtener todas las asesorías
     this.apiService.getAllAsesorias().subscribe(
       (data) => {
         console.log('Datos recibidos: ', data);
         this.asesorias = data;
-
         // Filtrar las asesorías activas después de recibir los datos
-        this.asesoriasActivas = this.asesorias.filter(asesoria => asesoria.estado === 'Activo');
+        this.asesoriasActivas = this.asesorias.filter(asesoria => asesoria.estado === 'En curso');
         this.asesoriasPendientes = this.asesorias.filter(asesoria => asesoria.estado === 'Pendiente');
       },
       (error) => {

@@ -38,14 +38,10 @@
     <div class="info-item">
       <p class="info-title">Lugar:</p>
       <select [(ngModel)]="selectedLugar" class="form-select">
-        <option *ngFor="let lugar of lugares" [value]="lugar.id_lugar">{{ lugar.nombre }}</option>
+        <option *ngFor="let lugar of lugares" [value]="lugar.idLugar">{{ lugar.Nombre }}</option>
       </select>
     </div>
     <hr>
-    <!-- <div class="info-item">
-      <p class="info-title">Impartido por:</p>
-      <p>{{ asesoria.maestroNombre }}</p>
-    </div> -->
 
     <div class="text-center mt-4">
       <button class="btn btn-primary" (click)="inscribirse()">Aceptar Asesoria</button>

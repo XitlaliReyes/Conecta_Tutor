@@ -36,21 +36,18 @@ export class AceptacionCursosComponent implements OnInit{
 
     if (storedId) {
       this.usuarioId = +storedId; 
-      this.apiService.obtenerUsuario(this.usuarioId).subscribe(
-        (usuario) => {
-          this.ocupacion = usuario.ocupacion; 
-        },
-        (error) => {
-          console.error('Error al obtener datos del usuario:', error);
-        }
-      );
+
+      this.ocupacion = sessionStorage.getItem('usuarioOcupacion') || '';
+      console.log('Ocupación cargada:', this.ocupacion);
+
     } else {alert('Debe iniciar sesión para continuar.');
         this.router.navigate(['/login']);
         return;
     }
-  
+ 
 
     const idAsesoria = this.route.snapshot.paramMap.get('id');
+    
     if (idAsesoria) {
       this.getAsesoriaDetails(idAsesoria); 
     }
@@ -72,7 +69,6 @@ export class AceptacionCursosComponent implements OnInit{
         console.error('Error al obtener los lugares:', error);
       }
     );
-
   }
 
   getAsesoriaDetails(id: string): void {

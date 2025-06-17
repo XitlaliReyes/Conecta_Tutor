@@ -14,42 +14,29 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class MostrarusuariosComponent implements OnInit {
 
   usuarios: any[] = [];
-  carreras: any[] = [];
-
+  docentes: any[] = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getUsuarios().subscribe(
+    this.apiService.getUsrandCarrera().subscribe(
       (data) => {
         console.log('Datos recibidos:', data); 
         this.usuarios = data;
-
-        // Ordenar los usuarios por carrera (id_carrera)
-        this.usuarios.sort((a, b) => {
-          if (a.id_carrera < b.id_carrera) {
-            return -1;
-          } else if (a.id_carrera > b.id_carrera) {
-            return 1;
-          }
-          return 0;
-        });
       },
       (error) => {
         console.error('Error al obtener usuarios:', error);
       }
     );
-    this.apiService.getCarrera().subscribe(
+
+    this.apiService.getDocentes().subscribe(
       (data) => {
         console.log('Datos recibidos:', data); 
-        this.carreras = data;
+        this.docentes = data;
       },
       (error) => {
-        console.error('Error al obtener carreras:', error);
+        console.error('Error al obtener usuarios:', error);
       }
     );
-  }
-  getCarreraNombre(id_carrera: number): string {
-    const carrera = this.carreras.find(c => c.id === id_carrera);
-    return carrera ? carrera.nombre : 'Carrera no asignada'; // Si no tiene carrera, mostrar "Carrera no asignada"
+
   }
 }
