@@ -111,7 +111,7 @@ export class CrearAsesoriaComponent implements OnInit {
       id_materia: Number(this.materiasSeleccionadas), 
       id_lugar: Number(this.lugarSeleccionado),      
       id_maestro: this.usuarioId,
-      estado: "Activo",
+      estado: "En curso",
       id_solicitante: null
     };
   

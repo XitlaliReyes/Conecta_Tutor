@@ -1,53 +1,50 @@
 <app-navbar></app-navbar>
-
 <div class="container">
   <h1>Crear Asesoría</h1>
-
-  <!-- Selección de materia -->
-<label for="materias">Materia:</label>
-<select id="materias" [(ngModel)]="materiasSeleccionadas">
-  <option *ngFor="let materia of materias" [value]="materia.id">
-    {{ materia.nombre }}
-  </option>
-</select>
-
-<!-- Selección de lugar -->
-<label for="materias">Lugar:</label>
-<select id="lugar" [(ngModel)]="lugarSeleccionado">
-  <option *ngFor="let lugar of lugares" [value]="lugar.id_lugar">
-    {{ lugar.nombre }}
-  </option>
-</select>
   
+  <!-- Selección de materia -->
+  <label for="materias">Materia:</label>
+  <select id="materias" [(ngModel)]="materiasSeleccionadas">
+    <option value="0">Selecciona una materia</option>
+    <option *ngFor="let materia of materias" [value]="materia.idMateria">
+      {{ materia.Nombre }}
+    </option>
+  </select>
+
+  <!-- Selección de lugar -->
+  <label for="lugar">Lugar:</label>
+  <select id="lugar" [(ngModel)]="lugarSeleccionado">
+    <option [value]="null">Selecciona un lugar</option>
+    <option *ngFor="let lugar of lugares" [value]="lugar.idLugar">
+      {{ lugar.Nombre }}
+    </option>
+  </select>
+
   <!-- Selección de días -->
   <label for="dias">Días:</label>
   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <input type="checkbox" class="btn-check" id="lunes" (change)="agregarDia('Lunes')" />
     <label class="btn btn-outline-primary" for="lunes">Lunes</label>
-
     <input type="checkbox" class="btn-check" id="martes" (change)="agregarDia('Martes')" />
     <label class="btn btn-outline-primary" for="martes">Martes</label>
-
     <input type="checkbox" class="btn-check" id="miercoles" (change)="agregarDia('Miércoles')" />
     <label class="btn btn-outline-primary" for="miercoles">Miércoles</label>
-
     <input type="checkbox" class="btn-check" id="jueves" (change)="agregarDia('Jueves')" />
     <label class="btn btn-outline-primary" for="jueves">Jueves</label>
-
     <input type="checkbox" class="btn-check" id="viernes" (change)="agregarDia('Viernes')" />
     <label class="btn btn-outline-primary" for="viernes">Viernes</label>
   </div>
 
-  <!-- Selección de fecha de inicio y fin -->
+  <!-- Selección de fecha de inicio -->
   <label for="fechaInicio">Fecha de inicio:</label>
   <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" />
 
   <!-- Selección de horario -->
   <label for="horaInicio">Hora de inicio:</label>
   <select id="horaInicio" [(ngModel)]="horarioInicio">
+    <option value="">Selecciona una hora</option>
     <option *ngFor="let hora of horarios" [value]="hora">{{ hora }}</option>
   </select>
 
-  
   <button class="btn btn-primary mt-3" (click)="crearAsesoria()">Crear Asesoría</button>
 </div>
