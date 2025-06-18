@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.1.90:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.137.42:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -144,8 +144,10 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/asesoriasPendientes`);
   }
 
+
+  //Cambiar a aseosriasSolicit
   getAsesoriasSolicitadas(idUsuario: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/asesoriasSolicitadas/${idUsuario}`);
+    return this.http.get<any[]>(`${this.apiUrl}/asesoriasSolicitadasMongo/${idUsuario}`);
   }
   
   //Alumno

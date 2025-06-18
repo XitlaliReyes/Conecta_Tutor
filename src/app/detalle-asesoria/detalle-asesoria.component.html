@@ -11,7 +11,7 @@
       <hr>
       <div class="info-item">
         <p class="info-title">Fecha:</p>
-        <p>Inicio: {{ asesoria.fecha_inicio }} - Fin: {{ asesoria.fecha_fin }}</p>
+        <p>{{ asesoria.fecha_inicio | date:'yyyy-MM-dd' }} - {{ asesoria.fecha_fin | date:'yyyy-MM-dd' }}</p>
       </div>
       <hr>
       <div class="info-item">
