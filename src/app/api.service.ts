@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://192.168.1.84:3001';  // La URL de tu API
+  private apiUrl = 'http://192.168.1.90:3001';  // La URL de tu API
 
   constructor(private http: HttpClient) { }
 
@@ -68,13 +68,15 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
   return this.http.put(url, { id, ...nuevosDatos });
 }
 
+// Tutores aceptar asesoria
   actualizarAsesoria(id_asesoria:number, nuevosDatos: any): Observable<any>{
-    const url = `${this.apiUrl}/asesoria`;
+    const url = `${this.apiUrl}/asesoriaMongo`;
     return this.http.put(url, { id_asesoria, ...nuevosDatos });
   }
 
+  //Cancelar Asesoria
   cancelarAsesoria(solicitud: any): Observable<any> {
-    const url = `${this.apiUrl}/cancelarasesoria`;
+    const url = `${this.apiUrl}/cancelarasesoriaMongo`;
     return this.http.put(url, solicitud);
   }
 
@@ -83,8 +85,9 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
     return this.http.put(url, solicitud);
   }
 
+  //Recupera en las que esta incrito el alumno
   getAsesoriasUsuario(id:number): Observable<any> {
-    const url = `${this.apiUrl}/asesorias/alumno/${id}`;
+    const url = `${this.apiUrl}/asesoriasMongo/alumno/${id}`;
     return this.http.get<any>(url);
   }
 
@@ -103,12 +106,16 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/asesorias`);
   }
 
+  getDetallesAsesorias2(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/asesoriasMongo`);
+  }
+
   getCarreraMaterias(): Observable<any> {
     return this.http.get(`${this.apiUrl}/carrera-materias`);
   }
 
   getAsesorias(id:number): Observable<any> {
-    const url = `${this.apiUrl}/asesorias/${id}`;
+    const url = `${this.apiUrl}/asesoriasMongo/${id}`;
     return this.http.get<any>(url);
   }
 
@@ -141,9 +148,11 @@ actualizarUsuario(id: number, nuevosDatos: any): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/asesoriasSolicitadas/${idUsuario}`);
   }
   
+  //Alumno
   enviarSolicitud(solicitud: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/asesoria`, solicitud);
+    return this.http.post(`${this.apiUrl}/asesoriaMongo`, solicitud);
   }
+
   crearAsesoria(asesoria: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/crear-asesoria`, asesoria);
   }
